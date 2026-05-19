@@ -18,11 +18,33 @@
     }
   
     function num(v) {
-      const n = Number(v ?? 0);
+      if (v === null || v === undefined || v === '') return 0;
+      if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
+  
+      let s = String(v).trim().replace(/\s+/g, '');
+      if (!s || s === '-') return 0;
+  
+      if (s.includes('.') && s.includes(',')) {
+        if (s.lastIndexOf(',') > s.lastIndexOf('.')) {
+          s = s.replace(/\./g, '').replace(',', '.');
+        } else {
+          s = s.replace(/,/g, '');
+        }
+      } else if (s.includes(',') && !s.includes('.')) {
+        s = s.replace(',', '.');
+      }
+  
+      const n = Number(s);
       return Number.isFinite(n) ? n : 0;
     }
   
     function fmt(v) {
+      const n = num(v);
+      if (!n) return '';
+      return n.toLocaleString('vi-VN', { maximumFractionDigits: 2 });
+    }
+  
+    function fmtKeepZero(v) {
       return num(v).toLocaleString('vi-VN', { maximumFractionDigits: 2 });
     }
   
@@ -41,6 +63,10 @@
         acc[k].push(r);
         return acc;
       }, {});
+    }
+  
+    function isRau(r) {
+      return norm(`${r.nhom_hang} ${r.loai_nvl} ${r.ten_nvl}`).includes('RAU');
     }
   
     function filteredRows() {
@@ -63,33 +89,52 @@
       });
     }
   
+    function totalDeXuat(list) {
+      return list.reduce((s, r) => s + num(r.so_luong_de_xuat), 0);
+    }
+  
     function table(list, mode) {
-      const extraActual = mode === 'actual'
-        ? `<th>SL thực tế</th><th>Đơn giá</th><th>Thành tiền</th><th>Trạng thái</th>`
+      const actualHead = mode === 'actual'
+        ? `
+          <th>SL thực tế</th>
+          <th>Đơn giá</th>
+          <th>Thành tiền</th>
+          <th>Trạng thái</th>
+        `
         : '';
   
       return `
         <div class="table-wrap">
-          <table>
+          <table class="kt-table">
             <thead>
               <tr>
-                <th style="width:52px">STT</th>
-                <th>Ngày ăn</th>
-                <th>Ngày đặt</th>
-                <th>Ngày giao</th>
-                <th>Chu kỳ</th>
-                <th>Nhóm</th>
-                <th>Mã NVL</th>
-                <th>Tên hàng</th>
-                <th>ĐVT</th>
-                <th>SL nấu</th>
-                <th>Trước sơ chế</th>
-                <th>Gối đầu</th>
-                <th>HS</th>
-                <th>SL đề xuất</th>
-                ${extraActual}
-                <th>NCC</th>
-                <th>Ghi chú</th>
+                <th rowspan="2" style="width:52px">STT</th>
+                <th rowspan="2">Ngày ăn</th>
+                <th rowspan="2">Ngày đặt</th>
+                <th rowspan="2">Ngày giao</th>
+                <th rowspan="2">Chu kỳ</th>
+                <th rowspan="2">Nhóm</th>
+                <th rowspan="2">Mã NVL</th>
+                <th rowspan="2">Tên hàng</th>
+                <th rowspan="2">ĐVT</th>
+                <th rowspan="2">Tổng ngày</th>
+                <th colspan="2">Sáng</th>
+                <th colspan="2">Trưa</th>
+                <th colspan="2">Chiều</th>
+                <th rowspan="2">Gối đầu</th>
+                <th rowspan="2">HS</th>
+                <th rowspan="2">SL đề xuất</th>
+                ${actualHead}
+                <th rowspan="2">NCC</th>
+                <th rowspan="2">Ghi chú</th>
+              </tr>
+              <tr>
+                <th>GV-Q12</th>
+                <th>Củ Chi</th>
+                <th>GV-Q12</th>
+                <th>Củ Chi</th>
+                <th>GV-Q12</th>
+                <th>Củ Chi</th>
               </tr>
             </thead>
             <tbody>
@@ -114,11 +159,18 @@
                     <td>${esc(r.ma_nvl)}</td>
                     <td class="name">${esc(r.ten_nvl)}</td>
                     <td class="center">${esc(r.don_vi)}</td>
-                    <td class="right">${fmt(r.so_luong_nau)}</td>
-                    <td class="right">${fmt(r.so_luong_truoc_so_che)}</td>
-                    <td class="right">${fmt(r.rau_goi_dau)}</td>
-                    <td class="center">${fmt(r.he_so_du_phong)}%</td>
-                    <td class="right strong">${fmt(r.so_luong_de_xuat)}</td>
+                    <td class="right strong">${fmtKeepZero(r.so_luong_nau)}</td>
+  
+                    <td class="right">${fmt(r.sang_go_vap)}</td>
+                    <td class="right">${fmt(r.sang_cu_chi)}</td>
+                    <td class="right">${fmt(r.trua_go_vap)}</td>
+                    <td class="right">${fmt(r.trua_cu_chi)}</td>
+                    <td class="right">${fmt(r.chieu_go_vap)}</td>
+                    <td class="right">${fmt(r.chieu_cu_chi)}</td>
+  
+                    <td class="right">${fmtKeepZero(r.rau_goi_dau)}</td>
+                    <td class="center">${fmtKeepZero(r.he_so_du_phong)}%</td>
+                    <td class="right strong red">${fmtKeepZero(r.so_luong_de_xuat)}</td>
                     ${actual}
                     <td>${esc(r.ncc)}</td>
                     <td>${esc(r.ghi_chu)}</td>
@@ -136,7 +188,7 @@
         <section class="block">
           <div class="block-title">
             <span>${esc(title)} — ${list.length} mặt hàng</span>
-            <span class="block-sub">Tổng SL đề xuất: ${fmt(list.reduce((s, r) => s + num(r.so_luong_de_xuat), 0))}</span>
+            <span class="block-sub">Tổng SL đề xuất: ${fmtKeepZero(totalDeXuat(list))}</span>
           </div>
           ${table(list, mode)}
         </section>
@@ -146,8 +198,7 @@
     function renderSummary(list) {
       const byCycle = groupBy(list, r => r.chu_ky_dat);
       const byNcc = groupBy(list, r => r.ncc);
-  
-      const rau = list.filter(r => norm(`${r.nhom_hang} ${r.loai_nvl} ${r.ten_nvl}`).includes('RAU')).length;
+      const rau = list.filter(isRau).length;
       const monthly = list.filter(r => clean(r.chu_ky_dat) === 'MONTHLY').length;
   
       document.getElementById('summary').innerHTML = `
@@ -179,9 +230,10 @@
   
     function renderNcc(list) {
       const byNcc = groupBy(list, r => r.ncc);
+  
       const html = Object.entries(byNcc)
         .sort((a, b) => a[0].localeCompare(b[0], 'vi'))
-        .map(([ncc, list]) => section(`NCC: ${ncc}`, list, 'proposal'))
+        .map(([ncc, group]) => section(`NCC: ${ncc}`, group, 'proposal'))
         .join('');
   
       document.getElementById('nccRoot').innerHTML = html || `<div class="formbox">Chưa có NCC.</div>`;
@@ -189,6 +241,8 @@
   
     function renderFilters() {
       const select = document.getElementById('cycleFilter');
+      if (!select) return;
+  
       const cycles = Array.from(new Set(rows.map(r => clean(r.chu_ky_dat)).filter(Boolean)));
   
       cycles.sort((a, b) => {
@@ -220,7 +274,7 @@
           document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
   
           btn.classList.add('active');
-          document.getElementById(id).classList.add('active');
+          document.getElementById(id)?.classList.add('active');
         });
       });
     }
