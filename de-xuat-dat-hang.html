@@ -3,1065 +3,123 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Đề xuất đặt hàng Bình Mỹ</title>
+<title>Hệ thống đặt hàng Bình Mỹ</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f3f4f6;color:#111827;font-family:Arial,Helvetica,sans-serif}
-.page{padding:24px}
-.paper{max-width:1700px;margin:0 auto;background:#fff;border:1px solid #d1d5db;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.08)}
-.header{background:linear-gradient(135deg,#111827,#374151);color:#fff;padding:24px 28px;display:flex;justify-content:space-between;gap:20px}
-.company{font-size:13px;font-weight:700}
-.title{font-size:30px;font-weight:800;margin-top:6px;text-transform:uppercase}
-.subtitle{margin-top:6px;font-size:14px;opacity:.9}
-.datebox{text-align:right;font-size:13px;line-height:1.6}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:18px 24px;background:#f9fafb;border-bottom:1px solid #e5e7eb}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px}
-.label{color:#6b7280;font-size:12px}
-.value{margin-top:4px;font-size:22px;font-weight:800}
-.tabs{display:flex;gap:8px;padding:16px 24px;background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
-.tabbtn{border:1px solid #d1d5db;background:#f9fafb;padding:10px 14px;border-radius:8px;font-weight:800;cursor:pointer}
+body{margin:0;background:#eef1f5;color:#111827;font-family:Arial,Helvetica,sans-serif}
+.page{padding:22px}
+.paper{max-width:1680px;margin:0 auto;background:#fff;border:1px solid #d1d5db;border-radius:16px;overflow:hidden;box-shadow:0 18px 45px rgba(15,23,42,.12)}
+.header{background:linear-gradient(135deg,#111827,#27364a);color:#fff;padding:24px 30px;display:flex;justify-content:space-between;gap:20px}
+.company{font-size:13px;font-weight:800;letter-spacing:.04em}
+.title{font-size:30px;font-weight:900;margin-top:6px;text-transform:uppercase}
+.subtitle{margin-top:7px;font-size:14px;opacity:.92}
+.datebox{text-align:right;font-size:13px;line-height:1.7}
+.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:18px 24px;background:#f8fafc;border-bottom:1px solid #e5e7eb}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px}
+.label{color:#64748b;font-size:12px;font-weight:700}
+.value{margin-top:5px;font-size:23px;font-weight:900}
+.tabs{display:flex;gap:8px;padding:14px 24px;background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:5}
+.tabbtn{border:1px solid #cbd5e1;background:#f8fafc;padding:10px 14px;border-radius:9px;font-weight:900;cursor:pointer}
 .tabbtn.active{background:#111827;color:#fff}
-.content{padding:24px}
-.tab{display:none}
-.tab.active{display:block}
-.note{background:#fffbeb;border:1px solid #f59e0b;color:#78350f;padding:12px 14px;border-radius:10px;margin-bottom:18px;line-height:1.5}
-.block{margin-top:22px;border:1px solid #d1d5db;border-radius:10px;overflow:hidden}
-.block-title{background:#1f2937;color:white;padding:10px 14px;font-weight:800;font-size:14px}
+.content{padding:22px 24px 28px}
+.note{background:#fff7ed;border:1px solid #fb923c;color:#7c2d12;padding:12px 14px;border-radius:10px;margin-bottom:18px;line-height:1.5;font-size:14px}
+.toolbar{display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:wrap}
+.search{padding:10px 12px;border:1px solid #cbd5e1;border-radius:9px;min-width:280px;font-weight:700}
+.select{padding:10px 12px;border:1px solid #cbd5e1;border-radius:9px;font-weight:700}
+.action{padding:10px 13px;border:0;border-radius:9px;background:#0f766e;color:#fff;font-weight:900;cursor:pointer}
+.tab{display:none}.tab.active{display:block}
+.block{margin-top:18px;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;background:#fff}
+.block-title{background:#172033;color:#fff;padding:11px 14px;font-weight:900;font-size:14px;display:flex;justify-content:space-between;gap:10px}
+.block-sub{font-size:12px;opacity:.85}
+.table-wrap{overflow:auto}
 table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px}
 th,td{border:1px solid #d1d5db;padding:7px 6px;vertical-align:middle;word-break:break-word}
-th{background:#f3f4f6;font-weight:800;text-align:center}
+th{background:#f1f5f9;font-weight:900;text-align:center;color:#0f172a}
 tr:nth-child(even) td{background:#fafafa}
-.center{text-align:center}.right{text-align:right}.name{font-weight:700}.strong{font-weight:900;color:#b91c1c}
-.formbox{border:2px dashed #9ca3af;border-radius:12px;padding:20px;margin:20px 0;background:#f9fafb}
-.footer{padding:20px 24px 28px}
-.sign{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:24px;text-align:center;font-weight:700}
-.sign-box{height:92px;border-top:1px dashed #9ca3af;padding-top:8px}
-@media print{.tabs{display:none}.tab{display:block}.page{padding:0}.paper{box-shadow:none;border:none}}
+.center{text-align:center}.right{text-align:right}.name{font-weight:900}.strong{font-weight:900;color:#dc2626}
+.badge{display:inline-block;padding:3px 7px;border-radius:999px;background:#e2e8f0;font-size:11px;font-weight:900}
+.formbox{border:2px dashed #94a3b8;border-radius:12px;padding:18px;background:#f8fafc;line-height:1.6}
+.footer{padding:16px 24px 28px}
+.sign{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:22px;text-align:center;font-weight:900}
+.sign-box{height:88px;border-top:1px dashed #94a3b8;padding-top:9px}
+@media print{
+  body{background:#fff}
+  .page{padding:0}
+  .paper{max-width:none;box-shadow:none;border:none;border-radius:0}
+  .tabs,.toolbar,.action{display:none}
+  .tab{display:block}
+  .block{page-break-inside:avoid}
+  @page{size:A4 landscape;margin:8mm}
+}
 </style>
 </head>
 <body>
 <div class="page">
-<div class="paper">
-  <div class="header">
-    <div>
-      <div class="company">CÔNG TY TNHH BÌNH MỸ FOOD</div>
-      <div class="title">Hệ thống đặt hàng</div>
-      <div class="subtitle">Đề xuất auto → Đơn thực tế → Form gửi NCC</div>
-    </div>
-    <div class="datebox">
-      <div><b>Ngày tạo:</b> 11:30:25 19/5/2026</div>
-      <div><b>Trạng thái:</b> ĐỀ XUẤT</div>
-    </div>
-  </div>
-
-  <div class="summary">
-    <div class="card"><div class="label">Tổng mặt hàng</div><div class="value">9</div></div>
-    <div class="card"><div class="label">Thực phẩm</div><div class="value">1</div></div>
-    <div class="card"><div class="label">Đồ khô/tráng miệng</div><div class="value">8</div></div>
-    <div class="card"><div class="label">Rau củ</div><div class="value">0</div></div>
-  </div>
-
-  <div class="tabs">
-    <button class="tabbtn active" onclick="openTab('auto')">1. Đặt hàng đề xuất auto</button>
-    <button class="tabbtn" onclick="openTab('actual')">2. Đặt hàng thực tế</button>
-    <button class="tabbtn" onclick="openTab('kt')">3. Tab giống kế toán</button>
-    <button class="tabbtn" onclick="openTab('ncc')">4. Form gửi NCC</button>
-  </div>
-
-  <div class="content">
-    <div class="note">
-      <b>Lưu ý:</b> Tab đề xuất là dữ liệu auto. Tab thực tế là phần quản lý/kho/kế toán nhập tay nếu cần.
-    </div>
-
-    <div id="auto" class="tab active">
-      <h2>1. Đặt hàng đề xuất theo chu kỳ</h2>
-      
-  
-    <section class="block">
-      <div class="block-title">CHU KỲ: 9_DAYS — 5 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_303</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.620</td>
-          <td class="right">1.620</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.701</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">2</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_142</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">105,4</td>
-          <td class="right">105,4</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">110,67</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">3</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td></td>
-          <td class="name">Gạo</td>
-          <td class="center">kg</td>
-          <td class="right">6.331,57</td>
-          <td class="right">6.331,57</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">6.648,15</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">4</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_002</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">3.901,26</td>
-          <td class="right">3.901,26</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">4.096,32</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">5</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_006</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.551,1</td>
-          <td class="right">1.551,1</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.628,66</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-    </tbody>
-  </table>
-    </section>
-    <section class="block">
-      <div class="block-title">CHU KỲ: MONTHLY — 4 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_001</td>
-          <td class="name">Dầu ăn</td>
-          <td class="center">ml</td>
-          <td class="right">1.605</td>
-          <td class="right">1.605</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">1.765,5</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-        <tr>
-          <td class="center">2</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">g</td>
-          <td class="right">2.380</td>
-          <td class="right">2.380</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">2.618</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-        <tr>
-          <td class="center">3</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">Kg</td>
-          <td class="right">12,44</td>
-          <td class="right">12,44</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">13,68</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-        <tr>
-          <td class="center">4</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>THUC_PHAM</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">NẤM ĐÔNG CÔ</td>
-          <td class="center">kg</td>
-          <td class="right">423</td>
-          <td class="right">423</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">465,3</td>
-          <td>NCC GIA VỊ</td>
-          <td>10kg</td>
-        </tr>
-      
-    </tbody>
-  </table>
-    </section>
-
-    </div>
-
-    <div id="actual" class="tab">
-      <h2>2. Đặt hàng thực tế</h2>
-      <div class="formbox">
-        Khu vực này dùng để nhập tay sau khi chốt đơn: số lượng thực tế, đơn giá, NCC, trạng thái giao hàng.
-        Có thể làm thành Google Sheet riêng: <b>DAT_HANG_THUC_TE</b>.
+  <div class="paper">
+    <div class="header">
+      <div>
+        <div class="company">CÔNG TY TNHH BÌNH MỸ FOOD</div>
+        <div class="title">Hệ thống đặt hàng</div>
+        <div class="subtitle">Đề xuất auto theo chu kỳ → Đặt hàng thực tế → Form gửi NCC</div>
       </div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_303</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.620</td>
-          <td class="right">1.620</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.701</td>
-          <td>NCC GẠO</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">2</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_142</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">105,4</td>
-          <td class="right">105,4</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">110,67</td>
-          <td>NCC GẠO</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">3</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td></td>
-          <td class="name">Gạo</td>
-          <td class="center">kg</td>
-          <td class="right">6.331,57</td>
-          <td class="right">6.331,57</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">6.648,15</td>
-          <td>NCC GẠO</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">4</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_002</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">3.901,26</td>
-          <td class="right">3.901,26</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">4.096,32</td>
-          <td>NCC GẠO</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">5</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_006</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.551,1</td>
-          <td class="right">1.551,1</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.628,66</td>
-          <td>NCC GẠO</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">6</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_001</td>
-          <td class="name">Dầu ăn</td>
-          <td class="center">ml</td>
-          <td class="right">1.605</td>
-          <td class="right">1.605</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">1.765,5</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">7</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">g</td>
-          <td class="right">2.380</td>
-          <td class="right">2.380</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">2.618</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">8</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">Kg</td>
-          <td class="right">12,44</td>
-          <td class="right">12,44</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">13,68</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-        <tr>
-          <td class="center">9</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>THUC_PHAM</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">NẤM ĐÔNG CÔ</td>
-          <td class="center">kg</td>
-          <td class="right">423</td>
-          <td class="right">423</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">465,3</td>
-          <td>NCC GIA VỊ</td>
-          <td>Nhập thực tế tại Google Sheet</td>
-        </tr>
-      
-    </tbody>
-  </table>
+      <div class="datebox">
+        <div><b>Ngày tạo:</b> 11:46:51 19/5/2026</div>
+        <div><b>Trạng thái:</b> ĐỀ XUẤT</div>
+      </div>
     </div>
 
-    <div id="kt" class="tab">
-      <h2>3. Nhóm giống kế toán/kho</h2>
-      
-  
-    <section class="block">
-      <div class="block-title">Thực phẩm — 1 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>THUC_PHAM</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">NẤM ĐÔNG CÔ</td>
-          <td class="center">kg</td>
-          <td class="right">423</td>
-          <td class="right">423</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">465,3</td>
-          <td>NCC GIA VỊ</td>
-          <td>10kg</td>
-        </tr>
-      
-    </tbody>
-  </table>
-    </section>
-    <section class="block">
-      <div class="block-title">Đồ khô, tráng miệng — 8 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_303</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.620</td>
-          <td class="right">1.620</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.701</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">2</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_142</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">105,4</td>
-          <td class="right">105,4</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">110,67</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">3</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td></td>
-          <td class="name">Gạo</td>
-          <td class="center">kg</td>
-          <td class="right">6.331,57</td>
-          <td class="right">6.331,57</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">6.648,15</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">4</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_002</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">3.901,26</td>
-          <td class="right">3.901,26</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">4.096,32</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">5</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_006</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.551,1</td>
-          <td class="right">1.551,1</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.628,66</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">6</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_001</td>
-          <td class="name">Dầu ăn</td>
-          <td class="center">ml</td>
-          <td class="right">1.605</td>
-          <td class="right">1.605</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">1.765,5</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-        <tr>
-          <td class="center">7</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">g</td>
-          <td class="right">2.380</td>
-          <td class="right">2.380</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">2.618</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-        <tr>
-          <td class="center">8</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">Kg</td>
-          <td class="right">12,44</td>
-          <td class="right">12,44</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">13,68</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-    </tbody>
-  </table>
-    </section>
-    <section class="block">
-      <div class="block-title">Rau củ — 0 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-    </tbody>
-  </table>
-    </section>
+    <div class="summary" id="summary"></div>
 
+    <div class="tabs">
+      <button class="tabbtn active" data-tab="auto">1. Đề xuất theo chu kỳ</button>
+      <button class="tabbtn" data-tab="actual">2. Đặt hàng thực tế</button>
+      <button class="tabbtn" data-tab="ncc">3. Form gửi NCC</button>
     </div>
 
-    <div id="ncc" class="tab">
-      <h2>4. Form gửi NCC</h2>
-      
-  
-    <section class="block">
-      <div class="block-title">NCC: NCC GẠO — 5 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_303</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.620</td>
-          <td class="right">1.620</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.701</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">2</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_142</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">105,4</td>
-          <td class="right">105,4</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">110,67</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">3</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td></td>
-          <td class="name">Gạo</td>
-          <td class="center">kg</td>
-          <td class="right">6.331,57</td>
-          <td class="right">6.331,57</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">6.648,15</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">4</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_002</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">3.901,26</td>
-          <td class="right">3.901,26</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">4.096,32</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-        <tr>
-          <td class="center">5</td>
-          <td>2026-05-18</td>
-          <td>18/05/2026</td>
-          <td>18/05/2026</td>
-          <td class="center">9_DAYS</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_006</td>
-          <td class="name">GẠO</td>
-          <td class="center">kg</td>
-          <td class="right">1.551,1</td>
-          <td class="right">1.551,1</td>
-          <td class="right">0</td>
-          <td class="center">5%</td>
-          <td class="right strong">1.628,66</td>
-          <td>NCC GẠO</td>
-          <td>Khoảng 9 ngày / 1000kg</td>
-        </tr>
-      
-    </tbody>
-  </table>
-    </section>
-    <section class="block">
-      <div class="block-title">NCC: NCC ĐỒ KHÔ — 3 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_001</td>
-          <td class="name">Dầu ăn</td>
-          <td class="center">ml</td>
-          <td class="right">1.605</td>
-          <td class="right">1.605</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">1.765,5</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-        <tr>
-          <td class="center">2</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">g</td>
-          <td class="right">2.380</td>
-          <td class="right">2.380</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">2.618</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-        <tr>
-          <td class="center">3</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>DO_KHO_TRANG_MIENG</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-          <td class="center">Kg</td>
-          <td class="right">12,44</td>
-          <td class="right">12,44</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">13,68</td>
-          <td>NCC ĐỒ KHÔ</td>
-          <td></td>
-        </tr>
-      
-    </tbody>
-  </table>
-    </section>
-    <section class="block">
-      <div class="block-title">NCC: NCC GIA VỊ — 1 mặt hàng</div>
-      
-  <table>
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Ngày ăn</th>
-        <th>Ngày đặt</th>
-        <th>Ngày giao</th>
-        <th>Chu kỳ</th>
-        <th>Nhóm KT</th>
-        <th>Mã NVL</th>
-        <th>Tên hàng</th>
-        <th>ĐVT</th>
-        <th>SL nấu</th>
-        <th>Trước sơ chế</th>
-        <th>Gối đầu</th>
-        <th>HS</th>
-        <th>SL đề xuất</th>
-        <th>NCC</th>
-        <th>Ghi chú</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td class="center">1</td>
-          <td>2026-05-18</td>
-          <td>Cuối tháng</td>
-          <td>Ngày 1-10</td>
-          <td class="center">MONTHLY</td>
-          <td>THUC_PHAM</td>
-          <td>TP_FOOD_149</td>
-          <td class="name">NẤM ĐÔNG CÔ</td>
-          <td class="center">kg</td>
-          <td class="right">423</td>
-          <td class="right">423</td>
-          <td class="right">0</td>
-          <td class="center">10%</td>
-          <td class="right strong">465,3</td>
-          <td>NCC GIA VỊ</td>
-          <td>10kg</td>
-        </tr>
-      
-    </tbody>
-  </table>
-    </section>
+    <div class="content">
+      <div class="note">
+        <b>Lưu ý:</b> Bảng này là đề xuất tự động. Quản lý/kho/kế toán kiểm tra lại quy cách, NCC, giá và thời gian giao trước khi chốt đơn.
+      </div>
 
+      <div class="toolbar">
+        <input id="q" class="search" placeholder="Tìm mã NVL, tên hàng, NCC...">
+        <select id="cycleFilter" class="select"></select>
+        <button class="action" onclick="window.print()">In / Xuất PDF</button>
+      </div>
+
+      <div id="auto" class="tab active">
+        <h2>Đề xuất đặt hàng theo chu kỳ</h2>
+        <div id="cycleRoot"></div>
+      </div>
+
+      <div id="actual" class="tab">
+        <h2>Đặt hàng thực tế</h2>
+        <div class="formbox">
+          Dùng tab này để đối chiếu sau khi chốt: số lượng thực tế, đơn giá, thành tiền, NCC và trạng thái giao hàng.
+          Phần nhập tay nên quản lý trong Google Sheet <b>DAT_HANG_THUC_TE</b>.
+        </div>
+        <div id="actualRoot"></div>
+      </div>
+
+      <div id="ncc" class="tab">
+        <h2>Form gửi nhà cung cấp</h2>
+        <div id="nccRoot"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="sign">
+        <div class="sign-box">Người lập đề xuất</div>
+        <div class="sign-box">Kho xác nhận</div>
+        <div class="sign-box">Kế toán chốt đơn</div>
+      </div>
     </div>
   </div>
-
-  <div class="footer">
-    <div class="sign">
-      <div class="sign-box">Người lập đề xuất</div>
-      <div class="sign-box">Kho xác nhận</div>
-      <div class="sign-box">Kế toán chốt đơn</div>
-    </div>
-  </div>
-</div>
 </div>
 
 <script>
-function openTab(id){
-  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-  document.querySelectorAll('.tabbtn').forEach(x => x.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-}
+window.ORDER_DATA = {"generated_at":"11:46:51 19/5/2026","proposal_rows":[{"ngay_an":"2026-05-18","ngay_dat":"18/05/2026","ngay_giao":"18/05/2026","gio_giao":"","chu_ky_dat":"9_DAYS","nhom_hang":"GẠO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","don_vi":"kg","so_luong_nau":1620,"so_luong_truoc_so_che":1620,"rau_goi_dau":0,"he_so_du_phong":5,"so_luong_de_xuat":1701,"ncc":"NCC GẠO","ghi_chu":"Khoảng 9 ngày / 1000kg","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"CHIỀU","mon_an":"Cháo thịt bằm trưa chiều","source_field":"CHIEU_CHAO","portion_block":"CHIEU_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"TRƯA","mon_an":"Cháo thịt bằm trưa chiều","source_field":"TRUA_CHAO","portion_block":"TRUA_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"CHIỀU","mon_an":"Cháo thịt bằm trưa chiều","source_field":"CHIEU_CHAO","portion_block":"CHIEU_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":60,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"TRƯA","mon_an":"Cháo thịt bằm trưa chiều","source_field":"TRUA_CHAO","portion_block":"TRUA_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":60,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"CHIỀU","mon_an":"Cháo thịt bằm trưa chiều","source_field":"CHIEU_CHAO","portion_block":"CHIEU_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"TRƯA","mon_an":"Cháo thịt bằm trưa chiều","source_field":"TRUA_CHAO","portion_block":"TRUA_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":180,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"CHIỀU","mon_an":"Cháo thịt bằm trưa chiều","source_field":"CHIEU_CHAO","portion_block":"CHIEU_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":300,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"TRƯA","mon_an":"Cháo thịt bằm trưa chiều","source_field":"TRUA_CHAO","portion_block":"TRUA_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":300,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"CHIỀU","mon_an":"Cháo thịt bằm trưa chiều","source_field":"CHIEU_CHAO","portion_block":"CHIEU_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":180,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"TRƯA","mon_an":"Cháo thịt bằm trưa chiều","source_field":"TRUA_CHAO","portion_block":"TRUA_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"CHIỀU","mon_an":"Cháo thịt bằm trưa chiều","source_field":"CHIEU_CHAO","portion_block":"CHIEU_CHAO","ma_nvl":"TP_FOOD_303","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":60,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"18/05/2026","ngay_giao":"18/05/2026","gio_giao":"","chu_ky_dat":"9_DAYS","nhom_hang":"GẠO","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","don_vi":"kg","so_luong_nau":105.4,"so_luong_truoc_so_che":105.4,"rau_goi_dau":0,"he_so_du_phong":5,"so_luong_de_xuat":110.67,"ncc":"NCC GẠO","ghi_chu":"Khoảng 9 ngày / 1000kg","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":2.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":2.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":3.8,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":3.8,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.96,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":2.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":5.29,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":5.52,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":6.1,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":7.02,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"Hoa Lan","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":7.02,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"Hoa Lan","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":7.02,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":5.41,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":5.52,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":13,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":13.46,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":3.22,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":3.45,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"CHIỀU","mon_an":"Cơm trắng","source_field":"CHIEU_COM","portion_block":"CHIEU_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":3.8,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"TRƯA","mon_an":"Cơm trắng","source_field":"TRUA_COM","portion_block":"TRUA_COM","ma_nvl":"TP_FOOD_142","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":3.8,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"18/05/2026","ngay_giao":"18/05/2026","gio_giao":"","chu_ky_dat":"9_DAYS","nhom_hang":"GẠO","ma_nvl":"","ten_nvl":"Gạo","don_vi":"kg","so_luong_nau":6331.57,"so_luong_truoc_so_che":6331.57,"rau_goi_dau":0,"he_so_du_phong":5,"so_luong_de_xuat":6648.15,"ncc":"NCC GẠO","ghi_chu":"Khoảng 9 ngày / 1000kg","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":4.25,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"TRƯA","mon_an":"Cơm xay - cơm trắng","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":4.25,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":2.04,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"TRƯA","mon_an":"Cơm xay - cơm trắng","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.87,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.53,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"TRƯA","mon_an":"Cơm xay - cơm trắng","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.53,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":2.21,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"CHIỀU","mon_an":"Ống - cơm trắng","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"TRƯA","mon_an":"Cơm xay - cơm trắng","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":2.21,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"TRƯA","mon_an":"Ống - cơm trắng","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"CHIỀU","mon_an":"Ống - cơm trắng","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":102.04,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"TRƯA","mon_an":"Ống - cơm trắng","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":102.04,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"XẾ","mon_an":"Ống xế - cơm trắng","source_field":"XE_ONG","portion_block":"XE_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":68.03,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":510.2,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"CHIỀU","mon_an":"Ống - cơm trắng","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":51.02,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"TRƯA","mon_an":"Cơm xay - cơm trắng","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":680.27,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"TRƯA","mon_an":"Ống - cơm trắng","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":51.02,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"XẾ","mon_an":"Ống xế - cơm trắng","source_field":"XE_ONG","portion_block":"XE_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":34.01,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"CHIỀU","mon_an":"Ống - cơm trắng","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":765.31,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"TRƯA","mon_an":"Ống - cơm trắng","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":765.31,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"XẾ","mon_an":"Ống xế - cơm trắng","source_field":"XE_ONG","portion_block":"XE_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":510.2,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":170.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":170.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"TRƯA","mon_an":"Cơm xay - cơm trắng","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":170.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"CHIỀU","mon_an":"Ống - cơm trắng","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":153.06,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"TRƯA","mon_an":"Ống - cơm trắng","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":102.04,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"XẾ","mon_an":"Ống xế - cơm trắng","source_field":"XE_ONG","portion_block":"XE_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":68.03,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":340.14,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"TRƯA","mon_an":"Cơm xay - cơm trắng","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":340.14,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"CHIỀU","mon_an":"Cơm xay - cơm trắng","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":170.07,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"CHIỀU","mon_an":"Ống - cơm trắng","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":102.04,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"TRƯA","mon_an":"Ống - cơm trắng","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":102.04,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"XẾ","mon_an":"Ống xế - cơm trắng","source_field":"XE_ONG","portion_block":"XE_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":68.03,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"XẾ","mon_an":"Ống xế - cơm trắng","source_field":"XE_ONG","portion_block":"XE_ONG__COM","ma_nvl":"","ten_nvl":"Gạo","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":714.29,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"18/05/2026","ngay_giao":"18/05/2026","gio_giao":"","chu_ky_dat":"9_DAYS","nhom_hang":"GẠO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","don_vi":"kg","so_luong_nau":3901.26,"so_luong_truoc_so_che":3901.26,"rau_goi_dau":0,"he_so_du_phong":5,"so_luong_de_xuat":4096.32,"ncc":"NCC GẠO","ghi_chu":"Khoảng 9 ngày / 1000kg","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_ONG","portion_block":"SANG_ONG","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":60,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_ONG","portion_block":"SANG_ONG","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":60,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_ONG","portion_block":"SANG_ONG","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":900,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":780,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":360,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"Hoa Lan","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":180,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":300,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_ONG","portion_block":"SANG_ONG","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":180,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":600,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_CHAO","portion_block":"CHAO","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_ONG","portion_block":"SANG_ONG","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":120,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"SÁNG","mon_an":"Cháo thịt bằm ăn sáng","source_field":"SANG_ONG","portion_block":"SANG_ONG","ma_nvl":"TP_FOOD_002","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.26,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"18/05/2026","ngay_giao":"18/05/2026","gio_giao":"","chu_ky_dat":"9_DAYS","nhom_hang":"GẠO","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","don_vi":"kg","so_luong_nau":1551.1,"so_luong_truoc_so_che":1551.1,"rau_goi_dau":0,"he_so_du_phong":5,"so_luong_de_xuat":1628.66,"ncc":"NCC GẠO","ghi_chu":"Khoảng 9 ngày / 1000kg","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"SÁNG","mon_an":"Xay ăn sáng","source_field":"SANG_XAY","portion_block":"SANG_XAY","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.1,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"SÁNG","mon_an":"Xay ăn sáng","source_field":"SANG_XAY","portion_block":"SANG_XAY","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":150,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"SÁNG","mon_an":"Xay ăn sáng","source_field":"SANG_XAY","portion_block":"SANG_XAY","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":400,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"SÁNG","mon_an":"Xay ăn sáng","source_field":"SANG_XAY","portion_block":"SANG_XAY","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":300,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"SÁNG","mon_an":"Xay ăn sáng","source_field":"SANG_XAY","portion_block":"SANG_XAY","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":50,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"SÁNG","mon_an":"Xay ăn sáng","source_field":"SANG_XAY","portion_block":"SANG_XAY","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":50,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"SÁNG","mon_an":"Xay ăn sáng","source_field":"SANG_XAY","portion_block":"SANG_XAY","ma_nvl":"TP_FOOD_006","ten_nvl":"GẠO","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":600,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"Cuối tháng","ngay_giao":"Ngày 1-10","gio_giao":"","chu_ky_dat":"MONTHLY","nhom_hang":"GIA VỊ, ĐỒ KHÔ","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","don_vi":"ml","so_luong_nau":1605,"so_luong_truoc_so_che":1605,"rau_goi_dau":0,"he_so_du_phong":10,"so_luong_de_xuat":1765.5,"ncc":"NCC ĐỒ KHÔ","ghi_chu":"","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":125,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_THUC_AN_XAY","portion_block":"CHIEU_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":45,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":125,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_THUC_AN_XAY","portion_block":"TRUA_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":45,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"XẾ","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"XE_ONG","portion_block":"XE_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":15,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":5,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":20,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":5,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"XẾ","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"XE_ONG","portion_block":"XE_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":5,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":60,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":75,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_THUC_AN_XAY","portion_block":"CHIEU_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":55,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":55,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":75,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_THUC_AN_XAY","portion_block":"TRUA_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":60,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"XẾ","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"XE_ONG","portion_block":"XE_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":75,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":5,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":5,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":5,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"Hoa Lan","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_THUC_AN_XAY","portion_block":"CHIEU_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"Hoa Lan","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_THUC_AN_XAY","portion_block":"TRUA_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":45,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":15,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":45,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"XẾ","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"XE_ONG","portion_block":"XE_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":5,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"XẾ","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"XE_ONG","portion_block":"XE_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":10,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_COM_XAY","portion_block":"CHIEU_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":65,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_ONG","portion_block":"CHIEU_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":105,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"CHIỀU","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"CHIEU_THUC_AN_XAY","portion_block":"CHIEU_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":35,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_COM_XAY","portion_block":"TRUA_COM_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":65,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_ONG","portion_block":"TRUA_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":105,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"TRƯA","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"TRUA_THUC_AN_XAY","portion_block":"TRUA_THUC_AN_XAY__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":35,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"XẾ","mon_an":"Thức ăn xay trưa chiều rau xanh","source_field":"XE_ONG","portion_block":"XE_ONG__FOOD","ma_nvl":"TP_FOOD_001","ten_nvl":"Dầu ăn","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"ml","so_luong_nau":105,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"Cuối tháng","ngay_giao":"Ngày 1-10","gio_giao":"","chu_ky_dat":"MONTHLY","nhom_hang":"GIA VỊ, ĐỒ KHÔ","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","don_vi":"g","so_luong_nau":2380,"so_luong_truoc_so_che":2380,"rau_goi_dau":0,"he_so_du_phong":10,"so_luong_de_xuat":2618,"ncc":"NCC ĐỒ KHÔ","ghi_chu":"","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":700,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":735,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"g","so_luong_nau":945,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"Cuối tháng","ngay_giao":"Ngày 1-10","gio_giao":"","chu_ky_dat":"MONTHLY","nhom_hang":"GIA VỊ, ĐỒ KHÔ","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","don_vi":"Kg","so_luong_nau":12.44,"so_luong_truoc_so_che":12.44,"rau_goi_dau":0,"he_so_du_phong":10,"so_luong_de_xuat":13.68,"ncc":"NCC ĐỒ KHÔ","ghi_chu":"","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.16,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.12,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.68,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"Hoa Lan","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":2,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.68,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":3.64,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","loai_nvl":"GIA VỊ, ĐỒ KHÔ","don_vi":"Kg","so_luong_nau":1.16,"chu_ky_dat":"MONTHLY","ncc":"NCC ĐỒ KHÔ","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"DO_KHO_TRANG_MIENG"},{"ngay_an":"2026-05-18","ngay_dat":"Cuối tháng","ngay_giao":"Ngày 1-10","gio_giao":"","chu_ky_dat":"MONTHLY","nhom_hang":"THÁNG","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","don_vi":"kg","so_luong_nau":423,"so_luong_truoc_so_che":423,"rau_goi_dau":0,"he_so_du_phong":10,"so_luong_de_xuat":465.3,"ncc":"NCC GIA VỊ","ghi_chu":"10kg","source_rows":[{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 1","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":20,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSĐB 2","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":33,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"CSTC","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":21,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH bà","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":32,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"HH ông","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":48,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"BÌNH MỸ","khu":"Hoa Lan","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":57,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Care - AH","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":48,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Gold - DQH","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":104,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Thạnh Lộc","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":27,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"},{"run_date":"2026-05-18","run_date_label":"","ngay_an":"2026-05-18","cluster":"GÒ VẤP","khu":"Trung Xuân Thu - NT","buoi":"SÁNG","mon_an":"Mì nấu thịt nạc","source_field":"SANG_THUONG","portion_block":"SANG_MAIN","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","loai_nvl":"RAU","don_vi":"g","so_luong_nau":33,"chu_ky_dat":"DAILY","ncc":"NCC RAU","trang_thai":"ĐỀ XUẤT"}],"nhom_ke_toan":"THUC_PHAM"}],"accounting_rows":[]};
 </script>
+<script src="./app.js?v=1779166011053"></script>
 </body>
 </html>
