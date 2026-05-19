@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<title>Phiếu xuất kho</title>
+<title>Phiếu đề xuất đặt hàng</title>
 <style>
 @page { size: A4 landscape; margin: 12mm; }
 * { box-sizing: border-box; }
@@ -13,14 +13,8 @@ body {
   font-family: "Times New Roman", serif;
   font-size: 13px;
 }
-.page {
-  width: 100%;
-  padding: 22px 28px;
-}
-.company {
-  font-size: 13px;
-  margin-bottom: 2px;
-}
+.page { width: 100%; padding: 22px 28px; }
+.company { font-size: 13px; margin-bottom: 2px; }
 .title {
   text-align: center;
   font-size: 26px;
@@ -44,24 +38,20 @@ th, td {
   vertical-align: middle;
   word-break: break-word;
 }
-th {
-  text-align: center;
-  font-weight: 700;
-}
-td.num {
-  text-align: right;
-}
-td.center {
-  text-align: center;
-}
-.red {
-  color: red;
-  font-weight: 700;
-}
+th { text-align: center; font-weight: 700; }
+td.num { text-align: right; }
+td.center { text-align: center; }
+.red { color: red; font-weight: 700; }
 .section td {
   font-weight: 700;
   text-align: center;
   background: #eee;
+}
+.cycle td {
+  font-weight: 700;
+  font-size: 15px;
+  background: #d9eaf7;
+  text-align: left;
 }
 .sign {
   margin-top: 8px;
@@ -78,15 +68,13 @@ td.center {
   text-align: center;
   font-weight: 700;
 }
-.sign-name {
-  margin-top: 34px;
-}
+.sign-name { margin-top: 34px; }
 </style>
 </head>
 <body>
 <div class="page">
   <div class="company">CÔNG TY TNHH BÌNH MỸ FOOD</div>
-  <div class="title">PHIẾU XUẤT KHO</div>
+  <div class="title">PHIẾU ĐỀ XUẤT ĐẶT HÀNG</div>
   <div class="sub">
     Kho xuất: &nbsp;&nbsp; Kho thực phẩm<br>
     Ngày: &nbsp;&nbsp; 19-05-26
@@ -113,558 +101,580 @@ td.center {
       </tr>
     </thead>
     <tbody>
-      <tr class="section">
-        <td></td><td></td><td></td><td>Thực phẩm</td>
-        <td></td><td></td><td></td><td></td><td></td><td></td>
-      </tr>
-
       
-        <tr>
-          <td>TP_FOOD_187</td>
-          <td><b>BẮP CẢI</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>10,48</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_141</td>
-          <td><b>BẦU</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>39,06</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_216</td>
-          <td><b>Bò chín</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>38,46</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_216</td>
-          <td><b>CÀ CHUA</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>6,29</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_041</td>
-          <td><b>CÀ NÂU</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>21,07</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_216</td>
-          <td><b>Cà rốt</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>6,29</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>Cà rốt</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>6,54</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_187</td>
-          <td><b>Cà rốt</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>8,38</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_164</td>
-          <td><b>CHUỐI CAU</b></td>
-          <td class="center">Phần</td>
-          <td class="num"><b>545,9</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_001</td>
-          <td><b>Củ cải</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>23,14</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>CỦ SẮN</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>6,54</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_001</td>
-          <td><b>Dầu ăn</b></td>
-          <td class="center">L</td>
-          <td class="num"><b>1,76</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_187</td>
-          <td><b>ĐẬU BẮP</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>8,38</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td></td>
-          <td><b>Đồ ăn chay</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>7,06</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_124</td>
-          <td><b>ĐU ĐỦ XANH</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>35,45</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td></td>
-          <td><b>Gạo</b></td>
-          <td class="center">kg</td>
-          <td class="num"><b>50</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_303</td>
-          <td><b>GẠO</b></td>
-          <td class="center">kg</td>
-          <td class="num"><b>50</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_142</td>
-          <td><b>GẠO</b></td>
-          <td class="center">kg</td>
-          <td class="num"><b>150</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_002</td>
-          <td><b>GẠO</b></td>
-          <td class="center">kg</td>
-          <td class="num"><b>50</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_006</td>
-          <td><b>GẠO</b></td>
-          <td class="center">kg</td>
-          <td class="num"><b>50</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_141</td>
-          <td><b>HÀNH LÁ</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,25</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_303</td>
-          <td><b>HÀNH LÁ</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,02</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_002</td>
-          <td><b>HÀNH LÁ</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,05</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>HÀNH LÁ</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,88</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_006</td>
-          <td><b>HÀNH LÁ</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,03</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_216</td>
-          <td><b>KHOAI TÂY</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>16,77</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>MÌ TRẦN KHÔNG GIA VỊ</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>16,29</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_041</td>
-          <td><b>Nạc dăm</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>39,06</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>NẤM ĐÔNG CÔ</b></td>
-          <td class="center">kg</td>
-          <td class="num"><b>0,46</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>NGÒ RÍ</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,88</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_001</td>
-          <td><b>Nước</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>1,68</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>Nước</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>111,04</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_165</td>
-          <td><b>Sữa chua</b></td>
-          <td class="center">Hộp</td>
-          <td class="num"><b>563,85</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_001</td>
-          <td><b>THỊT GÀ XAY</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>30,33</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_141</td>
-          <td><b>THỊT HEO XAY</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>3,49</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_303</td>
-          <td><b>THỊT HEO XAY</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,71</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_002</td>
-          <td><b>THỊT HEO XAY</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>2,26</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_006</td>
-          <td><b>THỊT HEO XAY</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>1,4</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_124</td>
-          <td><b>THỊT HEO XAY</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>3,37</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_149</td>
-          <td><b>Thịt nạc đùi</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>15,55</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_041</td>
-          <td><b>Tía tô</b></td>
-          <td class="center">Kg</td>
-          <td class="num"><b>0,76</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
-        <tr>
-          <td>TP_FOOD_001</td>
-          <td><b>TRỨNG GÀ</b></td>
-          <td class="center">Quả</td>
-          <td class="num"><b>168,53</b></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-          <td class="num"></td>
-        </tr>
-      
+    <tr class="cycle">
+      <td colspan="10">I. ĐẶT HÀNG NGÀY</td>
+    </tr>
+    <tr class="section">
+      <td></td><td></td><td></td><td>Thực phẩm</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    
+    <tr>
+      <td>TP_FOOD_187</td>
+      <td><b>BẮP CẢI</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>10,48</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">5,2</td>
+      <td class="num">4,98</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_141</td>
+      <td><b>BẦU</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>39,06</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">18,64</td>
+      <td class="num">19,28</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_216</td>
+      <td><b>CÀ CHUA</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>6,29</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">3,12</td>
+      <td class="num">2,99</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_041</td>
+      <td><b>CÀ NÂU</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>21,07</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">10,34</td>
+      <td class="num">10,12</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_216</td>
+      <td><b>Cà rốt</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>6,29</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">3,12</td>
+      <td class="num">2,99</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>Cà rốt</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>6,54</b></td>
+      <td class="num">3,18</td>
+      <td class="num">3,16</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_187</td>
+      <td><b>Cà rốt</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>8,38</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">4,16</td>
+      <td class="num">3,98</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_164</td>
+      <td><b>CHUỐI CAU</b></td>
+      <td class="center">Phần</td>
+      <td class="num"><b>545,9</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">255</td>
+      <td class="num">275</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_001</td>
+      <td><b>Củ cải</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>23,14</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">3,92</td>
+      <td class="num">5,74</td>
+      <td class="num">4,06</td>
+      <td class="num">5,74</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>CỦ SẮN</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>6,54</b></td>
+      <td class="num">3,18</td>
+      <td class="num">3,16</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_187</td>
+      <td><b>ĐẬU BẮP</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>8,38</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">4,16</td>
+      <td class="num">3,98</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_124</td>
+      <td><b>ĐU ĐỦ XANH</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>35,45</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">16,88</td>
+      <td class="num">17,55</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_141</td>
+      <td><b>HÀNH LÁ</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,25</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">0,12</td>
+      <td class="num">0,12</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_303</td>
+      <td><b>HÀNH LÁ</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,02</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">0,0</td>
+      <td class="num">0,0</td>
+      <td class="num">0,01</td>
+      <td class="num">0,0</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_002</td>
+      <td><b>HÀNH LÁ</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,05</b></td>
+      <td class="num">0,02</td>
+      <td class="num">0,02</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>HÀNH LÁ</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,88</b></td>
+      <td class="num">0,42</td>
+      <td class="num">0,42</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_006</td>
+      <td><b>HÀNH LÁ</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,03</b></td>
+      <td class="num">0,01</td>
+      <td class="num">0,02</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_216</td>
+      <td><b>KHOAI TÂY</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>16,77</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">8,32</td>
+      <td class="num">7,96</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>NGÒ RÍ</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,88</b></td>
+      <td class="num">0,42</td>
+      <td class="num">0,42</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_041</td>
+      <td><b>Tía tô</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,76</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">0,38</td>
+      <td class="num">0,37</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+  
+    <tr class="cycle">
+      <td colspan="10">III. ĐẶT HÀNG TUẦN</td>
+    </tr>
+    <tr class="section">
+      <td></td><td></td><td></td><td>Thực phẩm</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    
+    <tr>
+      <td>TP_FOOD_216</td>
+      <td><b>Bò chín</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>38,46</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">18,72</td>
+      <td class="num">17,91</td>
+    </tr>
+  
+    <tr>
+      <td></td>
+      <td><b>Đồ ăn chay</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>7,06</b></td>
+      <td class="num">1,8</td>
+      <td class="num">1,8</td>
+      <td class="num">0,84</td>
+      <td class="num">0,72</td>
+      <td class="num">0,72</td>
+      <td class="num">0,84</td>
+    </tr>
+  
+    <tr>
+      <td></td>
+      <td><b>Gạo</b></td>
+      <td class="center">kg</td>
+      <td class="num"><b>50</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">5,36</td>
+      <td class="num">7,89</td>
+      <td class="num">5,58</td>
+      <td class="num">8,06</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_303</td>
+      <td><b>GẠO</b></td>
+      <td class="center">kg</td>
+      <td class="num"><b>50</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">0,42</td>
+      <td class="num">0,36</td>
+      <td class="num">0,54</td>
+      <td class="num">0,3</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_142</td>
+      <td><b>GẠO</b></td>
+      <td class="center">kg</td>
+      <td class="num"><b>150</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">26,22</td>
+      <td class="num">27,49</td>
+      <td class="num">25,42</td>
+      <td class="num">26,22</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_002</td>
+      <td><b>GẠO</b></td>
+      <td class="center">kg</td>
+      <td class="num"><b>50</b></td>
+      <td class="num">2,58</td>
+      <td class="num">2,58</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_006</td>
+      <td><b>GẠO</b></td>
+      <td class="center">kg</td>
+      <td class="num"><b>50</b></td>
+      <td class="num">1</td>
+      <td class="num">1,65</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_041</td>
+      <td><b>Nạc dăm</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>39,06</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">18,8</td>
+      <td class="num">18,4</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_001</td>
+      <td><b>Nước</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>1,68</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">0,28</td>
+      <td class="num">0,41</td>
+      <td class="num">0,29</td>
+      <td class="num">0,41</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>Nước</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>111,04</b></td>
+      <td class="num">53</td>
+      <td class="num">52,75</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_165</td>
+      <td><b>Sữa chua</b></td>
+      <td class="center">Hộp</td>
+      <td class="num"><b>563,85</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">259</td>
+      <td class="num">278</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_001</td>
+      <td><b>THỊT GÀ XAY</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>30,33</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">5,04</td>
+      <td class="num">7,38</td>
+      <td class="num">5,22</td>
+      <td class="num">7,38</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_141</td>
+      <td><b>THỊT HEO XAY</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>3,49</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">1,63</td>
+      <td class="num">1,69</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_303</td>
+      <td><b>THỊT HEO XAY</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>0,71</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">0,18</td>
+      <td class="num">0,15</td>
+      <td class="num">0,23</td>
+      <td class="num">0,13</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_002</td>
+      <td><b>THỊT HEO XAY</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>2,26</b></td>
+      <td class="num">1,08</td>
+      <td class="num">1,08</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_006</td>
+      <td><b>THỊT HEO XAY</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>1,4</b></td>
+      <td class="num">0,5</td>
+      <td class="num">0,83</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_124</td>
+      <td><b>THỊT HEO XAY</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>3,37</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">1,58</td>
+      <td class="num">1,64</td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>Thịt nạc đùi</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>15,55</b></td>
+      <td class="num">7,42</td>
+      <td class="num">7,39</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_001</td>
+      <td><b>TRỨNG GÀ</b></td>
+      <td class="center">Quả</td>
+      <td class="num"><b>168,53</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">28</td>
+      <td class="num">41</td>
+      <td class="num">29</td>
+      <td class="num">41</td>
+    </tr>
+  
+  
+    <tr class="cycle">
+      <td colspan="10">IV. ĐẶT HÀNG THÁNG</td>
+    </tr>
+    <tr class="section">
+      <td></td><td></td><td></td><td>Thực phẩm</td>
+      <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    
+    <tr>
+      <td>TP_FOOD_001</td>
+      <td><b>Dầu ăn</b></td>
+      <td class="center">L</td>
+      <td class="num"><b>1,76</b></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num">0,28</td>
+      <td class="num">0,41</td>
+      <td class="num">0,29</td>
+      <td class="num">0,41</td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>MÌ TRẦN KHÔNG GIA VỊ</b></td>
+      <td class="center">Kg</td>
+      <td class="num"><b>16,29</b></td>
+      <td class="num">7,42</td>
+      <td class="num">7,39</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+    <tr>
+      <td>TP_FOOD_149</td>
+      <td><b>NẤM ĐÔNG CÔ</b></td>
+      <td class="center">kg</td>
+      <td class="num"><b>0,46</b></td>
+      <td class="num">0,21</td>
+      <td class="num">0,21</td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+      <td class="num"></td>
+    </tr>
+  
+  
     </tbody>
   </table>
 
