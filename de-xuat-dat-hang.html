@@ -2,19 +2,19 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<title>Phiếu đề xuất đặt hàng</title>
+<title>Đề xuất đặt hàng</title>
 <style>
-@page { size: A4 landscape; margin: 12mm; }
+@page { size: A4 landscape; margin: 10mm; }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background: #fff;
   color: #000;
   font-family: "Times New Roman", serif;
-  font-size: 13px;
+  font-size: 12px;
 }
-.page { width: 100%; padding: 22px 28px; }
-.company { font-size: 13px; margin-bottom: 2px; }
+.page { padding: 18px 22px; }
+.company { font-size: 13px; }
 .title {
   text-align: center;
   font-size: 26px;
@@ -25,7 +25,23 @@ body {
   text-align: center;
   font-weight: 700;
   line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+}
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border: 1px solid #999;
+  padding: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.toolbar input, .toolbar select, .toolbar button {
+  padding: 6px 8px;
+  font-size: 13px;
 }
 table {
   width: 100%;
@@ -42,17 +58,21 @@ th { text-align: center; font-weight: 700; }
 td.num { text-align: right; }
 td.center { text-align: center; }
 .red { color: red; font-weight: 700; }
-.section td {
-  font-weight: 700;
-  text-align: center;
-  background: #eee;
-}
-.cycle td {
-  font-weight: 700;
-  font-size: 15px;
+.cycle-row td {
   background: #d9eaf7;
-  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
 }
+.date-row td {
+  background: #f1f1f1;
+  font-weight: 700;
+}
+.section td {
+  background: #eee;
+  text-align: center;
+  font-weight: 700;
+}
+.meta-col { background: #fffdf2; }
 .sign {
   margin-top: 8px;
   display: grid;
@@ -69,6 +89,11 @@ td.center { text-align: center; }
   font-weight: 700;
 }
 .sign-name { margin-top: 34px; }
+@media print {
+  .toolbar { display: none; }
+  body { font-size: 11px; }
+  .page { padding: 0; }
+}
 </style>
 </head>
 <body>
@@ -77,605 +102,50 @@ td.center { text-align: center; }
   <div class="title">PHIẾU ĐỀ XUẤT ĐẶT HÀNG</div>
   <div class="sub">
     Kho xuất: &nbsp;&nbsp; Kho thực phẩm<br>
-    Ngày: &nbsp;&nbsp; 19-05-26
+    Ngày chạy: &nbsp;&nbsp; 19-05-26
+  </div>
+
+  <div class="toolbar">
+    <input id="q" placeholder="Tìm mã, tên hàng, NCC...">
+    <select id="cycle">
+      <option value="">Tất cả chu kỳ</option>
+      <option value="DAILY">Đặt hàng ngày</option>
+      <option value="TWO_DAY">Đặt hàng 2 ngày</option>
+      <option value="WEEKLY">Đặt hàng tuần</option>
+      <option value="MONTHLY">Đặt hàng tháng</option>
+    </select>
+    <select id="orderDate"></select>
+    <select id="ncc"></select>
+    <button onclick="window.print()">In / PDF</button>
   </div>
 
   <table>
     <thead>
       <tr>
-        <th rowspan="2" style="width:8%">Mã <span class="red">(*)</span></th>
-        <th rowspan="2" style="width:17%">Tên</th>
-        <th rowspan="2" style="width:9%">Đơn vị tính <span class="red">(*)</span></th>
-        <th rowspan="2" style="width:9%">Tổng ngày</th>
+        <th rowspan="2" style="width:7%">Ngày đặt</th>
+        <th rowspan="2" style="width:7%">Ngày cần</th>
+        <th rowspan="2" style="width:7%">Mã <span class="red">(*)</span></th>
+        <th rowspan="2" style="width:14%">Tên</th>
+        <th rowspan="2" style="width:6%">ĐVT <span class="red">(*)</span></th>
+        <th rowspan="2" style="width:7%">Tổng ngày</th>
         <th colspan="2">Sáng</th>
         <th colspan="2">Trưa</th>
         <th colspan="2">Chiều</th>
+        <th rowspan="2" style="width:6%">Tồn</th>
+        <th rowspan="2" style="width:6%">Chờ giao</th>
+        <th rowspan="2" style="width:7%">NCC</th>
+        <th rowspan="2" style="width:10%">Quy cách / Ghi chú</th>
       </tr>
       <tr>
-        <th>Cụm Gò Vấp -<br>Quận 12</th>
-        <th>Cụm Củ Chi</th>
-        <th>Cụm Gò Vấp -<br>Quận 12</th>
-        <th>Cụm Củ Chi</th>
-        <th>Cụm Gò Vấp -<br>Quận 12</th>
-        <th>Cụm Củ Chi</th>
+        <th>GV-Q12</th>
+        <th>Củ Chi</th>
+        <th>GV-Q12</th>
+        <th>Củ Chi</th>
+        <th>GV-Q12</th>
+        <th>Củ Chi</th>
       </tr>
     </thead>
-    <tbody>
-      
-    <tr class="cycle">
-      <td colspan="10">I. ĐẶT HÀNG NGÀY</td>
-    </tr>
-    <tr class="section">
-      <td></td><td></td><td></td><td>Thực phẩm</td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    
-    <tr>
-      <td>TP_FOOD_187</td>
-      <td><b>BẮP CẢI</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>10,48</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">5,2</td>
-      <td class="num">4,98</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_141</td>
-      <td><b>BẦU</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>39,06</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">18,64</td>
-      <td class="num">19,28</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_216</td>
-      <td><b>CÀ CHUA</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>6,29</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">3,12</td>
-      <td class="num">2,99</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_041</td>
-      <td><b>CÀ NÂU</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>21,07</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">10,34</td>
-      <td class="num">10,12</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_216</td>
-      <td><b>Cà rốt</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>6,29</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">3,12</td>
-      <td class="num">2,99</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>Cà rốt</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>6,54</b></td>
-      <td class="num">3,18</td>
-      <td class="num">3,16</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_187</td>
-      <td><b>Cà rốt</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>8,38</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">4,16</td>
-      <td class="num">3,98</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_164</td>
-      <td><b>CHUỐI CAU</b></td>
-      <td class="center">Phần</td>
-      <td class="num"><b>545,9</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">255</td>
-      <td class="num">275</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_001</td>
-      <td><b>Củ cải</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>23,14</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">3,92</td>
-      <td class="num">5,74</td>
-      <td class="num">4,06</td>
-      <td class="num">5,74</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>CỦ SẮN</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>6,54</b></td>
-      <td class="num">3,18</td>
-      <td class="num">3,16</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_187</td>
-      <td><b>ĐẬU BẮP</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>8,38</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">4,16</td>
-      <td class="num">3,98</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_124</td>
-      <td><b>ĐU ĐỦ XANH</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>35,45</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">16,88</td>
-      <td class="num">17,55</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_141</td>
-      <td><b>HÀNH LÁ</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,25</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">0,12</td>
-      <td class="num">0,12</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_303</td>
-      <td><b>HÀNH LÁ</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,02</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">0,0</td>
-      <td class="num">0,0</td>
-      <td class="num">0,01</td>
-      <td class="num">0,0</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_002</td>
-      <td><b>HÀNH LÁ</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,05</b></td>
-      <td class="num">0,02</td>
-      <td class="num">0,02</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>HÀNH LÁ</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,88</b></td>
-      <td class="num">0,42</td>
-      <td class="num">0,42</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_006</td>
-      <td><b>HÀNH LÁ</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,03</b></td>
-      <td class="num">0,01</td>
-      <td class="num">0,02</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_216</td>
-      <td><b>KHOAI TÂY</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>16,77</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">8,32</td>
-      <td class="num">7,96</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>NGÒ RÍ</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,88</b></td>
-      <td class="num">0,42</td>
-      <td class="num">0,42</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_041</td>
-      <td><b>Tía tô</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,76</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">0,38</td>
-      <td class="num">0,37</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-  
-    <tr class="cycle">
-      <td colspan="10">III. ĐẶT HÀNG TUẦN</td>
-    </tr>
-    <tr class="section">
-      <td></td><td></td><td></td><td>Thực phẩm</td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    
-    <tr>
-      <td>TP_FOOD_216</td>
-      <td><b>Bò chín</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>38,46</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">18,72</td>
-      <td class="num">17,91</td>
-    </tr>
-  
-    <tr>
-      <td></td>
-      <td><b>Đồ ăn chay</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>7,06</b></td>
-      <td class="num">1,8</td>
-      <td class="num">1,8</td>
-      <td class="num">0,84</td>
-      <td class="num">0,72</td>
-      <td class="num">0,72</td>
-      <td class="num">0,84</td>
-    </tr>
-  
-    <tr>
-      <td></td>
-      <td><b>Gạo</b></td>
-      <td class="center">kg</td>
-      <td class="num"><b>50</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">5,36</td>
-      <td class="num">7,89</td>
-      <td class="num">5,58</td>
-      <td class="num">8,06</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_303</td>
-      <td><b>GẠO</b></td>
-      <td class="center">kg</td>
-      <td class="num"><b>50</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">0,42</td>
-      <td class="num">0,36</td>
-      <td class="num">0,54</td>
-      <td class="num">0,3</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_142</td>
-      <td><b>GẠO</b></td>
-      <td class="center">kg</td>
-      <td class="num"><b>150</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">26,22</td>
-      <td class="num">27,49</td>
-      <td class="num">25,42</td>
-      <td class="num">26,22</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_002</td>
-      <td><b>GẠO</b></td>
-      <td class="center">kg</td>
-      <td class="num"><b>50</b></td>
-      <td class="num">2,58</td>
-      <td class="num">2,58</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_006</td>
-      <td><b>GẠO</b></td>
-      <td class="center">kg</td>
-      <td class="num"><b>50</b></td>
-      <td class="num">1</td>
-      <td class="num">1,65</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_041</td>
-      <td><b>Nạc dăm</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>39,06</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">18,8</td>
-      <td class="num">18,4</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_001</td>
-      <td><b>Nước</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>1,68</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">0,28</td>
-      <td class="num">0,41</td>
-      <td class="num">0,29</td>
-      <td class="num">0,41</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>Nước</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>111,04</b></td>
-      <td class="num">53</td>
-      <td class="num">52,75</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_165</td>
-      <td><b>Sữa chua</b></td>
-      <td class="center">Hộp</td>
-      <td class="num"><b>563,85</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">259</td>
-      <td class="num">278</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_001</td>
-      <td><b>THỊT GÀ XAY</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>30,33</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">5,04</td>
-      <td class="num">7,38</td>
-      <td class="num">5,22</td>
-      <td class="num">7,38</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_141</td>
-      <td><b>THỊT HEO XAY</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>3,49</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">1,63</td>
-      <td class="num">1,69</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_303</td>
-      <td><b>THỊT HEO XAY</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>0,71</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">0,18</td>
-      <td class="num">0,15</td>
-      <td class="num">0,23</td>
-      <td class="num">0,13</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_002</td>
-      <td><b>THỊT HEO XAY</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>2,26</b></td>
-      <td class="num">1,08</td>
-      <td class="num">1,08</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_006</td>
-      <td><b>THỊT HEO XAY</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>1,4</b></td>
-      <td class="num">0,5</td>
-      <td class="num">0,83</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_124</td>
-      <td><b>THỊT HEO XAY</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>3,37</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">1,58</td>
-      <td class="num">1,64</td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>Thịt nạc đùi</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>15,55</b></td>
-      <td class="num">7,42</td>
-      <td class="num">7,39</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_001</td>
-      <td><b>TRỨNG GÀ</b></td>
-      <td class="center">Quả</td>
-      <td class="num"><b>168,53</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">28</td>
-      <td class="num">41</td>
-      <td class="num">29</td>
-      <td class="num">41</td>
-    </tr>
-  
-  
-    <tr class="cycle">
-      <td colspan="10">IV. ĐẶT HÀNG THÁNG</td>
-    </tr>
-    <tr class="section">
-      <td></td><td></td><td></td><td>Thực phẩm</td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-    </tr>
-    
-    <tr>
-      <td>TP_FOOD_001</td>
-      <td><b>Dầu ăn</b></td>
-      <td class="center">L</td>
-      <td class="num"><b>1,76</b></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num">0,28</td>
-      <td class="num">0,41</td>
-      <td class="num">0,29</td>
-      <td class="num">0,41</td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>MÌ TRẦN KHÔNG GIA VỊ</b></td>
-      <td class="center">Kg</td>
-      <td class="num"><b>16,29</b></td>
-      <td class="num">7,42</td>
-      <td class="num">7,39</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-    <tr>
-      <td>TP_FOOD_149</td>
-      <td><b>NẤM ĐÔNG CÔ</b></td>
-      <td class="center">kg</td>
-      <td class="num"><b>0,46</b></td>
-      <td class="num">0,21</td>
-      <td class="num">0,21</td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-      <td class="num"></td>
-    </tr>
-  
-  
-    </tbody>
+    <tbody id="tbody"></tbody>
   </table>
 
   <div class="sign">
@@ -690,5 +160,126 @@ td.center { text-align: center; }
     <div>Thủ Kho<br><div class="sign-name">Bùi Văn Đẹp</div></div>
   </div>
 </div>
+
+<script>
+const rows = [{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_216","ten_nvl":"Bò chín","don_vi":"Kg","total":38.46,"sang_gv":0,"sang_cc":0,"trua_gv":0,"trua_cc":0,"chieu_gv":18.72,"chieu_cc":17.91,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 36.63 Kg | Trước sơ chế: 36.63 Kg | Dự phòng 5%: 1.83"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Đồ ăn chay","don_vi":"Kg","total":7.06,"sang_gv":1.8,"sang_cc":1.8,"trua_gv":0.84,"trua_cc":0.72,"chieu_gv":0.72,"chieu_cc":0.84,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 6.72 Kg | Trước sơ chế: 6.72 Kg | Dự phòng 5%: 0.34"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_041","ten_nvl":"Nạc dăm","don_vi":"Kg","total":39.06,"sang_gv":0,"sang_cc":0,"trua_gv":18.799999999999997,"trua_cc":18.4,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 37.2 Kg | Trước sơ chế: 37.2 Kg | Dự phòng 5%: 1.86"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Nước","don_vi":"Kg","total":112.73,"sang_gv":53,"sang_cc":52.75,"trua_gv":0.28,"trua_cc":0.41000000000000003,"chieu_gv":0.29000000000000004,"chieu_cc":0.41000000000000003,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 107.36 Kg | Trước sơ chế: 107.36 Kg | Dự phòng 5%: 5.37"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_165","ten_nvl":"Sữa chua","don_vi":"Hộp","total":563.85,"sang_gv":0,"sang_cc":0,"trua_gv":259,"trua_cc":278,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 537 Hộp | Trước sơ chế: 537 Hộp | Dự phòng 5%: 26.85"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Thịt gà xay","don_vi":"Kg","total":30.33,"sang_gv":0,"sang_cc":0,"trua_gv":5.039999999999999,"trua_cc":7.379999999999999,"chieu_gv":5.22,"chieu_cc":7.379999999999999,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 28.89 Kg | Trước sơ chế: 28.89 Kg | Dự phòng 5%: 1.44"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Thịt heo xay","don_vi":"Kg","total":11.21,"sang_gv":1.5750000000000002,"sang_cc":1.8999999999999997,"trua_gv":1.75,"trua_cc":1.7879999999999998,"chieu_gv":1.8559999999999999,"chieu_cc":1.8120000000000003,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 10.68 Kg | Trước sơ chế: 10.68 Kg | Dự phòng 5%: 0.53"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_149","ten_nvl":"Thịt nạc đùi","don_vi":"Kg","total":15.55,"sang_gv":7.420000000000001,"sang_cc":7.385,"trua_gv":0,"trua_cc":0,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC THỰC PHẨM","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 14.81 Kg | Trước sơ chế: 14.81 Kg | Dự phòng 5%: 0.74"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-16","ngay_dat_label":"16/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Trứng gà","don_vi":"Quả","total":168.53,"sang_gv":0,"sang_cc":0,"trua_gv":28,"trua_cc":41,"chieu_gv":29,"chieu_cc":41,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":2,"ncc":"NCC TRỨNG","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 160.5 Quả | Trước sơ chế: 160.5 Quả | Dự phòng 5%: 8.03"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_187","ten_nvl":"BẮP CẢI","don_vi":"Kg","total":10.48,"sang_gv":0,"sang_cc":0,"trua_gv":5.2,"trua_cc":4.975,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 10.17 Kg | Trước sơ chế: 10.17 Kg | Dự phòng 3%: 0.31"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_141","ten_nvl":"BẦU","don_vi":"Kg","total":39.06,"sang_gv":0,"sang_cc":0,"trua_gv":0,"trua_cc":0,"chieu_gv":18.64,"chieu_cc":19.28,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 37.92 Kg | Trước sơ chế: 37.92 Kg | Dự phòng 3%: 1.14"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_216","ten_nvl":"CÀ CHUA","don_vi":"Kg","total":6.29,"sang_gv":0,"sang_cc":0,"trua_gv":0,"trua_cc":0,"chieu_gv":3.12,"chieu_cc":2.985,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 6.11 Kg | Trước sơ chế: 6.11 Kg | Dự phòng 3%: 0.18"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_041","ten_nvl":"CÀ NÂU","don_vi":"Kg","total":21.07,"sang_gv":0,"sang_cc":0,"trua_gv":10.34,"trua_cc":10.120000000000001,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 20.46 Kg | Trước sơ chế: 20.46 Kg | Dự phòng 3%: 0.61"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_216","ten_nvl":"Cà rốt","don_vi":"Kg","total":6.29,"sang_gv":0,"sang_cc":0,"trua_gv":0,"trua_cc":0,"chieu_gv":3.12,"chieu_cc":2.985,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 6.11 Kg | Trước sơ chế: 6.11 Kg | Dự phòng 3%: 0.18"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_149","ten_nvl":"Cà rốt","don_vi":"Kg","total":6.54,"sang_gv":3.1800000000000006,"sang_cc":3.1649999999999996,"trua_gv":0,"trua_cc":0,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 6.35 Kg | Trước sơ chế: 6.35 Kg | Dự phòng 3%: 0.19"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_187","ten_nvl":"Cà rốt","don_vi":"Kg","total":8.38,"sang_gv":0,"sang_cc":0,"trua_gv":4.16,"trua_cc":3.98,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 8.14 Kg | Trước sơ chế: 8.14 Kg | Dự phòng 3%: 0.24"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_164","ten_nvl":"CHUỐI CAU","don_vi":"Phần","total":545.9,"sang_gv":0,"sang_cc":0,"trua_gv":0,"trua_cc":0,"chieu_gv":255,"chieu_cc":275,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 530 Phần | Trước sơ chế: 530 Phần | Dự phòng 3%: 15.9"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_001","ten_nvl":"Củ cải","don_vi":"Kg","total":23.14,"sang_gv":0,"sang_cc":0,"trua_gv":3.92,"trua_cc":5.739999999999999,"chieu_gv":4.0600000000000005,"chieu_cc":5.739999999999999,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 22.47 Kg | Trước sơ chế: 22.47 Kg | Dự phòng 3%: 0.67"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_149","ten_nvl":"CỦ SẮN","don_vi":"Kg","total":6.54,"sang_gv":3.1800000000000006,"sang_cc":3.1649999999999996,"trua_gv":0,"trua_cc":0,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 6.35 Kg | Trước sơ chế: 6.35 Kg | Dự phòng 3%: 0.19"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_187","ten_nvl":"ĐẬU BẮP","don_vi":"Kg","total":8.38,"sang_gv":0,"sang_cc":0,"trua_gv":4.16,"trua_cc":3.98,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 8.14 Kg | Trước sơ chế: 8.14 Kg | Dự phòng 3%: 0.24"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_124","ten_nvl":"ĐU ĐỦ XANH","don_vi":"Kg","total":35.45,"sang_gv":0,"sang_cc":0,"trua_gv":16.875,"trua_cc":17.55,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 34.42 Kg | Trước sơ chế: 34.42 Kg | Dự phòng 3%: 1.03"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Hành lá","don_vi":"Kg","total":1.22,"sang_gv":0.458,"sang_cc":0.46299999999999997,"trua_gv":0.004,"trua_cc":0.004,"chieu_gv":0.123,"chieu_cc":0.125,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 1.18 Kg | Trước sơ chế: 1.18 Kg | Dự phòng 3%: 0.04"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_216","ten_nvl":"KHOAI TÂY","don_vi":"Kg","total":16.77,"sang_gv":0,"sang_cc":0,"trua_gv":0,"trua_cc":0,"chieu_gv":8.32,"chieu_cc":7.960000000000001,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 16.28 Kg | Trước sơ chế: 16.28 Kg | Dự phòng 3%: 0.49"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_149","ten_nvl":"NGÒ RÍ","don_vi":"Kg","total":0.88,"sang_gv":0.424,"sang_cc":0.42200000000000004,"trua_gv":0,"trua_cc":0,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 0.85 Kg | Trước sơ chế: 0.85 Kg | Dự phòng 3%: 0.03"},{"chu_ky_dat":"DAILY","chu_ky_label":"ĐẶT HÀNG NGÀY","ngay_dat":"2026-05-17","ngay_dat_label":"17/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_041","ten_nvl":"Tía tô","don_vi":"Kg","total":0.76,"sang_gv":0,"sang_cc":0,"trua_gv":0.376,"trua_cc":0.368,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":3,"ty_le_sau_so_che":100,"dat_truoc_ngay":1,"ncc":"NCC RAU","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 0.74 Kg | Trước sơ chế: 0.74 Kg | Dự phòng 3%: 0.02"},{"chu_ky_dat":"WEEKLY","chu_ky_label":"ĐẶT HÀNG TUẦN","ngay_dat":"2026-05-18","ngay_dat_label":"18/05/2026","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Gạo","don_vi":"kg","total":200,"sang_gv":3.58,"sang_cc":4.23,"trua_gv":31.996999999999996,"trua_cc":35.736000000000004,"chieu_gv":31.532999999999998,"chieu_cc":34.581,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":5,"ty_le_sau_so_che":100,"dat_truoc_ngay":0,"ncc":"NCC GẠO","gio_giao":"","quy_cach_ncc":"bao 50kg","quy_cach_kho":"kg","quy_cach_nau":"kg","ghi_chu":"Khoảng 9 ngày / 1000kg"},{"chu_ky_dat":"MONTHLY","chu_ky_label":"ĐẶT HÀNG THÁNG","ngay_dat":"2026-05-28","ngay_dat_label":"Ngày 28 hằng tháng","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"","ten_nvl":"Dầu ăn","don_vi":"L","total":1.76,"sang_gv":0,"sang_cc":0,"trua_gv":0.28,"trua_cc":0.41000000000000003,"chieu_gv":0.29000000000000004,"chieu_cc":0.41000000000000003,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":10,"ty_le_sau_so_che":100,"dat_truoc_ngay":0,"ncc":"NCC ĐỒ KHÔ / GIA VỊ","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 1.6 L | Trước sơ chế: 1.6 L | Dự phòng 10%: 0.16"},{"chu_ky_dat":"MONTHLY","chu_ky_label":"ĐẶT HÀNG THÁNG","ngay_dat":"2026-05-28","ngay_dat_label":"Ngày 28 hằng tháng","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_149","ten_nvl":"MÌ TRẦN KHÔNG GIA VỊ","don_vi":"Kg","total":16.29,"sang_gv":7.420000000000001,"sang_cc":7.385,"trua_gv":0,"trua_cc":0,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":10,"ty_le_sau_so_che":100,"dat_truoc_ngay":0,"ncc":"NCC ĐỒ KHÔ / GIA VỊ","gio_giao":"","quy_cach_ncc":"","quy_cach_kho":"","quy_cach_nau":"","ghi_chu":"Nhu cầu nấu: 14.81 Kg | Trước sơ chế: 14.81 Kg | Dự phòng 10%: 1.48"},{"chu_ky_dat":"MONTHLY","chu_ky_label":"ĐẶT HÀNG THÁNG","ngay_dat":"2026-05-28","ngay_dat_label":"Ngày 28 hằng tháng","ngay_can_hang":"2026-05-18","ngay_can_hang_label":"18/05/2026","ma_nvl":"TP_FOOD_149","ten_nvl":"NẤM ĐÔNG CÔ","don_vi":"kg","total":0.46,"sang_gv":0.212,"sang_cc":0.21100000000000002,"trua_gv":0,"trua_cc":0,"chieu_gv":0,"chieu_cc":0,"ton_kho":0,"dang_cho_giao":0,"min_stock":0,"he_so_du_phong":10,"ty_le_sau_so_che":100,"dat_truoc_ngay":0,"ncc":"NCC GIA VỊ","gio_giao":"","quy_cach_ncc":"bao","quy_cach_kho":"kg","quy_cach_nau":"kg","ghi_chu":"10kg"}];
+
+function escHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, m => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+  }[m]));
+}
+
+function fmt(n) {
+  const x = Number(n || 0);
+  if (!x) return '';
+  return x.toLocaleString('vi-VN', { maximumFractionDigits: 2 });
+}
+
+function cycleLabel(c) {
+  return {
+    DAILY: 'I. ĐẶT HÀNG NGÀY',
+    TWO_DAY: 'II. ĐẶT HÀNG 2 NGÀY',
+    WEEKLY: 'III. ĐẶT HÀNG TUẦN',
+    MONTHLY: 'IV. ĐẶT HÀNG THÁNG'
+  }[c] || c;
+}
+
+function rowHtml(r) {
+  const note = [
+    r.gio_giao ? 'Giờ giao: ' + r.gio_giao : '',
+    r.quy_cach_ncc ? 'QC NCC: ' + r.quy_cach_ncc : '',
+    r.quy_cach_kho ? 'QC kho: ' + r.quy_cach_kho : '',
+    r.quy_cach_nau ? 'QC nấu: ' + r.quy_cach_nau : '',
+    r.he_so_du_phong ? 'HS: ' + r.he_so_du_phong + '%' : '',
+    r.ty_le_sau_so_che ? 'Sau sơ chế: ' + r.ty_le_sau_so_che + '%' : '',
+    r.ghi_chu || ''
+  ].filter(Boolean).join(' | ');
+
+  return `
+    <tr>
+      <td>${escHtml(r.ngay_dat_label || r.ngay_dat)}</td>
+      <td>${escHtml(r.ngay_can_hang_label || r.ngay_can_hang)}</td>
+      <td>${escHtml(r.ma_nvl)}</td>
+      <td><b>${escHtml(r.ten_nvl)}</b></td>
+      <td class="center">${escHtml(r.don_vi)}</td>
+      <td class="num"><b>${fmt(r.total)}</b></td>
+      <td class="num">${fmt(r.sang_gv)}</td>
+      <td class="num">${fmt(r.sang_cc)}</td>
+      <td class="num">${fmt(r.trua_gv)}</td>
+      <td class="num">${fmt(r.trua_cc)}</td>
+      <td class="num">${fmt(r.chieu_gv)}</td>
+      <td class="num">${fmt(r.chieu_cc)}</td>
+      <td class="num meta-col">${fmt(r.ton_kho)}</td>
+      <td class="num meta-col">${fmt(r.dang_cho_giao)}</td>
+      <td class="meta-col">${escHtml(r.ncc)}</td>
+      <td class="meta-col">${escHtml(note)}</td>
+    </tr>
+  `;
+}
+
+function render() {
+  const q = document.getElementById('q').value.toLowerCase();
+  const cycle = document.getElementById('cycle').value;
+  const od = document.getElementById('orderDate').value;
+  const ncc = document.getElementById('ncc').value;
+
+  const filtered = rows.filter(r => {
+    const hay = [r.ma_nvl, r.ten_nvl, r.ncc, r.ngay_dat, r.chu_ky_dat].join(' ').toLowerCase();
+    return (!q || hay.includes(q))
+      && (!cycle || r.chu_ky_dat === cycle)
+      && (!od || r.ngay_dat === od)
+      && (!ncc || r.ncc === ncc);
+  });
+
+  const cycles = ['DAILY', 'TWO_DAY', 'WEEKLY', 'MONTHLY'];
+  let html = '';
+
+  for (const c of cycles) {
+    const partCycle = filtered.filter(r => r.chu_ky_dat === c);
+    if (!partCycle.length) continue;
+
+    html += `<tr class="cycle-row"><td colspan="16">${cycleLabel(c)}</td></tr>`;
+
+    const dates = [...new Set(partCycle.map(r => r.ngay_dat || 'CHƯA CÓ NGÀY ĐẶT'))].sort();
+
+    for (const d of dates) {
+      const partDate = partCycle.filter(r => (r.ngay_dat || 'CHƯA CÓ NGÀY ĐẶT') === d);
+      html += `<tr class="date-row"><td colspan="16">Ngày đặt: ${escHtml(partDate[0].ngay_dat_label || d)} — ${partDate.length} mặt hàng</td></tr>`;
+      html += `<tr class="section"><td></td><td></td><td></td><td></td><td></td><td>Thực phẩm</td><td colspan="10"></td></tr>`;
+      html += partDate.map(rowHtml).join('');
+    }
+  }
+
+  document.getElementById('tbody').innerHTML = html || '<tr><td colspan="16">Không có dữ liệu</td></tr>';
+}
+
+function initFilters() {
+  const dates = [...new Set(rows.map(r => r.ngay_dat).filter(Boolean))].sort();
+  document.getElementById('orderDate').innerHTML =
+    '<option value="">Tất cả ngày đặt</option>' +
+    dates.map(d => {
+      const found = rows.find(r => r.ngay_dat === d);
+      return `<option value="${escHtml(d)}">${escHtml(found.ngay_dat_label || d)}</option>`;
+    }).join('');
+
+  const nccs = [...new Set(rows.map(r => r.ncc).filter(Boolean))].sort();
+  document.getElementById('ncc').innerHTML =
+    '<option value="">Tất cả NCC</option>' +
+    nccs.map(x => `<option value="${escHtml(x)}">${escHtml(x)}</option>`).join('');
+}
+
+['q','cycle','orderDate','ncc'].forEach(id => {
+  document.addEventListener('input', e => {
+    if (e.target && e.target.id === id) render();
+  });
+  document.addEventListener('change', e => {
+    if (e.target && e.target.id === id) render();
+  });
+});
+
+initFilters();
+render();
+</script>
 </body>
 </html>
