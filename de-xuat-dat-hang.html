@@ -8,9 +8,9 @@
 *{box-sizing:border-box}
 body{margin:0;background:#f3f4f6;color:#111827;font-family:Arial,Helvetica,sans-serif}
 .page{padding:24px}
-.paper{max-width:1600px;margin:0 auto;background:#fff;border:1px solid #d1d5db;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.paper{max-width:1700px;margin:0 auto;background:#fff;border:1px solid #d1d5db;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.08)}
 .header{background:linear-gradient(135deg,#111827,#374151);color:#fff;padding:24px 28px;display:flex;justify-content:space-between;gap:20px}
-.company{font-size:13px;font-weight:700;letter-spacing:.04em}
+.company{font-size:13px;font-weight:700}
 .title{font-size:30px;font-weight:800;margin-top:6px;text-transform:uppercase}
 .subtitle{margin-top:6px;font-size:14px;opacity:.9}
 .datebox{text-align:right;font-size:13px;line-height:1.6}
@@ -18,19 +18,25 @@ body{margin:0;background:#f3f4f6;color:#111827;font-family:Arial,Helvetica,sans-
 .card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px}
 .label{color:#6b7280;font-size:12px}
 .value{margin-top:4px;font-size:22px;font-weight:800}
+.tabs{display:flex;gap:8px;padding:16px 24px;background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
+.tabbtn{border:1px solid #d1d5db;background:#f9fafb;padding:10px 14px;border-radius:8px;font-weight:800;cursor:pointer}
+.tabbtn.active{background:#111827;color:#fff}
 .content{padding:24px}
+.tab{display:none}
+.tab.active{display:block}
 .note{background:#fffbeb;border:1px solid #f59e0b;color:#78350f;padding:12px 14px;border-radius:10px;margin-bottom:18px;line-height:1.5}
 .block{margin-top:22px;border:1px solid #d1d5db;border-radius:10px;overflow:hidden}
 .block-title{background:#1f2937;color:white;padding:10px 14px;font-weight:800;font-size:14px}
-.supplier .block-title{background:#065f46}
 table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px}
 th,td{border:1px solid #d1d5db;padding:7px 6px;vertical-align:middle;word-break:break-word}
 th{background:#f3f4f6;font-weight:800;text-align:center}
 tr:nth-child(even) td{background:#fafafa}
 .center{text-align:center}.right{text-align:right}.name{font-weight:700}.strong{font-weight:900;color:#b91c1c}
+.formbox{border:2px dashed #9ca3af;border-radius:12px;padding:20px;margin:20px 0;background:#f9fafb}
 .footer{padding:20px 24px 28px}
 .sign{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:24px;text-align:center;font-weight:700}
 .sign-box{height:92px;border-top:1px dashed #9ca3af;padding-top:8px}
+@media print{.tabs{display:none}.tab{display:block}.page{padding:0}.paper{box-shadow:none;border:none}}
 </style>
 </head>
 <body>
@@ -39,530 +45,1004 @@ tr:nth-child(even) td{background:#fafafa}
   <div class="header">
     <div>
       <div class="company">CÔNG TY TNHH BÌNH MỸ FOOD</div>
-      <div class="title">Bảng đề xuất đặt hàng</div>
-      <div class="subtitle">Tự động từ Menu + Báo cơm + Định mức món + Nhu cầu NVL</div>
+      <div class="title">Hệ thống đặt hàng</div>
+      <div class="subtitle">Đề xuất auto → Đơn thực tế → Form gửi NCC</div>
     </div>
     <div class="datebox">
-      <div><b>Ngày tạo:</b> 11:21:57 19/5/2026</div>
+      <div><b>Ngày tạo:</b> 11:30:04 19/5/2026</div>
       <div><b>Trạng thái:</b> ĐỀ XUẤT</div>
     </div>
   </div>
 
   <div class="summary">
     <div class="card"><div class="label">Tổng mặt hàng</div><div class="value">9</div></div>
-    <div class="card"><div class="label">Tổng NCC</div><div class="value">3</div></div>
-    <div class="card"><div class="label">Tổng chu kỳ</div><div class="value">2</div></div>
-    <div class="card"><div class="label">Nguồn dữ liệu</div><div class="value">LED</div></div>
+    <div class="card"><div class="label">Thực phẩm</div><div class="value">1</div></div>
+    <div class="card"><div class="label">Đồ khô/tráng miệng</div><div class="value">8</div></div>
+    <div class="card"><div class="label">Rau củ</div><div class="value">0</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tabbtn active" onclick="openTab('auto')">1. Đặt hàng đề xuất auto</button>
+    <button class="tabbtn" onclick="openTab('actual')">2. Đặt hàng thực tế</button>
+    <button class="tabbtn" onclick="openTab('kt')">3. Tab giống kế toán</button>
+    <button class="tabbtn" onclick="openTab('ncc')">4. Form gửi NCC</button>
   </div>
 
   <div class="content">
     <div class="note">
-      <b>Lưu ý:</b> Đây là bảng đề xuất đặt hàng, không bắt buộc đặt đúng 100%.
-      Kho, Bếp và Kế toán kiểm tra lại trước khi chốt NCC.
+      <b>Lưu ý:</b> Tab đề xuất là dữ liệu auto. Tab thực tế là phần quản lý/kho/kế toán nhập tay nếu cần.
     </div>
 
-    <h2>1. Đề xuất theo chu kỳ đặt hàng</h2>
-    
+    <div id="auto" class="tab active">
+      <h2>1. Đặt hàng đề xuất theo chu kỳ</h2>
+      
+  
     <section class="block">
       <div class="block-title">CHU KỲ: 9_DAYS — 5 mặt hàng</div>
       
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
         <tr>
-          <th>STT</th>
-          <th>Ngày ăn</th>
-          <th>Ngày đặt</th>
-          <th>Ngày giao</th>
-          <th>Chu kỳ</th>
-          <th>Nhóm</th>
-          <th>Mã NVL</th>
-          <th>Tên hàng</th>
-          <th>ĐVT</th>
-          <th>SL nấu</th>
-          <th>Trước sơ chế</th>
-          <th>Gối đầu</th>
-          <th>HS</th>
-          <th>SL đề xuất</th>
-          <th>NCC</th>
-          <th>Ghi chú</th>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_303</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.620</td>
+          <td class="right">1.620</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.701</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
         </tr>
-      </thead>
-      <tbody>
-        
-          <tr>
-            <td class="center">1</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_303</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">1.620</td>
-            <td class="right">1.620</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">1.701</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">2</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_142</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">105,4</td>
-            <td class="right">105,4</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">110,67</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">3</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td></td>
-            <td class="name">Gạo</td>
-            <td class="center">kg</td>
-            <td class="right">6.331,57</td>
-            <td class="right">6.331,57</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">6.648,15</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">4</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_002</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">3.901,26</td>
-            <td class="right">3.901,26</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">4.096,32</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">5</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_006</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">1.551,1</td>
-            <td class="right">1.551,1</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">1.628,66</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-      </tbody>
-    </table>
-  
+      
+        <tr>
+          <td class="center">2</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_142</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">105,4</td>
+          <td class="right">105,4</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">110,67</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">3</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td></td>
+          <td class="name">Gạo</td>
+          <td class="center">kg</td>
+          <td class="right">6.331,57</td>
+          <td class="right">6.331,57</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">6.648,15</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">4</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_002</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">3.901,26</td>
+          <td class="right">3.901,26</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">4.096,32</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">5</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_006</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.551,1</td>
+          <td class="right">1.551,1</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.628,66</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+    </tbody>
+  </table>
     </section>
-  
     <section class="block">
       <div class="block-title">CHU KỲ: MONTHLY — 4 mặt hàng</div>
       
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
         <tr>
-          <th>STT</th>
-          <th>Ngày ăn</th>
-          <th>Ngày đặt</th>
-          <th>Ngày giao</th>
-          <th>Chu kỳ</th>
-          <th>Nhóm</th>
-          <th>Mã NVL</th>
-          <th>Tên hàng</th>
-          <th>ĐVT</th>
-          <th>SL nấu</th>
-          <th>Trước sơ chế</th>
-          <th>Gối đầu</th>
-          <th>HS</th>
-          <th>SL đề xuất</th>
-          <th>NCC</th>
-          <th>Ghi chú</th>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_001</td>
+          <td class="name">Dầu ăn</td>
+          <td class="center">ml</td>
+          <td class="right">1.605</td>
+          <td class="right">1.605</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">1.765,5</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
         </tr>
-      </thead>
-      <tbody>
-        
-          <tr>
-            <td class="center">1</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>GIA VỊ, ĐỒ KHÔ</td>
-            <td>TP_FOOD_001</td>
-            <td class="name">Dầu ăn</td>
-            <td class="center">ml</td>
-            <td class="right">1.605</td>
-            <td class="right">1.605</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">1.765,5</td>
-            <td>NCC ĐỒ KHÔ</td>
-            <td></td>
-          </tr>
-        
-          <tr>
-            <td class="center">2</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>GIA VỊ, ĐỒ KHÔ</td>
-            <td>TP_FOOD_149</td>
-            <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-            <td class="center">g</td>
-            <td class="right">2.380</td>
-            <td class="right">2.380</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">2.618</td>
-            <td>NCC ĐỒ KHÔ</td>
-            <td></td>
-          </tr>
-        
-          <tr>
-            <td class="center">3</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>GIA VỊ, ĐỒ KHÔ</td>
-            <td>TP_FOOD_149</td>
-            <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-            <td class="center">Kg</td>
-            <td class="right">12,44</td>
-            <td class="right">12,44</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">13,68</td>
-            <td>NCC ĐỒ KHÔ</td>
-            <td></td>
-          </tr>
-        
-          <tr>
-            <td class="center">4</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>THÁNG</td>
-            <td>TP_FOOD_149</td>
-            <td class="name">NẤM ĐÔNG CÔ</td>
-            <td class="center">kg</td>
-            <td class="right">423</td>
-            <td class="right">423</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">465,3</td>
-            <td>NCC GIA VỊ</td>
-            <td>10kg</td>
-          </tr>
-        
-      </tbody>
-    </table>
-  
+      
+        <tr>
+          <td class="center">2</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">g</td>
+          <td class="right">2.380</td>
+          <td class="right">2.380</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">2.618</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="center">3</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">Kg</td>
+          <td class="right">12,44</td>
+          <td class="right">12,44</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">13,68</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="center">4</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>THUC_PHAM</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">NẤM ĐÔNG CÔ</td>
+          <td class="center">kg</td>
+          <td class="right">423</td>
+          <td class="right">423</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">465,3</td>
+          <td>NCC GIA VỊ</td>
+          <td>10kg</td>
+        </tr>
+      
+    </tbody>
+  </table>
     </section>
-  
 
-    <h2>2. Đề xuất theo nhà cung cấp</h2>
-    
-    <section class="block supplier">
+    </div>
+
+    <div id="actual" class="tab">
+      <h2>2. Đặt hàng thực tế</h2>
+      <div class="formbox">
+        Khu vực này dùng để nhập tay sau khi chốt đơn: số lượng thực tế, đơn giá, NCC, trạng thái giao hàng.
+        Có thể làm thành Google Sheet riêng: <b>DAT_HANG_THUC_TE</b>.
+      </div>
+      
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_303</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.620</td>
+          <td class="right">1.620</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.701</td>
+          <td>NCC GẠO</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">2</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_142</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">105,4</td>
+          <td class="right">105,4</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">110,67</td>
+          <td>NCC GẠO</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">3</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td></td>
+          <td class="name">Gạo</td>
+          <td class="center">kg</td>
+          <td class="right">6.331,57</td>
+          <td class="right">6.331,57</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">6.648,15</td>
+          <td>NCC GẠO</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">4</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_002</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">3.901,26</td>
+          <td class="right">3.901,26</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">4.096,32</td>
+          <td>NCC GẠO</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">5</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_006</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.551,1</td>
+          <td class="right">1.551,1</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.628,66</td>
+          <td>NCC GẠO</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">6</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_001</td>
+          <td class="name">Dầu ăn</td>
+          <td class="center">ml</td>
+          <td class="right">1.605</td>
+          <td class="right">1.605</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">1.765,5</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">7</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">g</td>
+          <td class="right">2.380</td>
+          <td class="right">2.380</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">2.618</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">8</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">Kg</td>
+          <td class="right">12,44</td>
+          <td class="right">12,44</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">13,68</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+        <tr>
+          <td class="center">9</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>THUC_PHAM</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">NẤM ĐÔNG CÔ</td>
+          <td class="center">kg</td>
+          <td class="right">423</td>
+          <td class="right">423</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">465,3</td>
+          <td>NCC GIA VỊ</td>
+          <td>Nhập thực tế tại Google Sheet</td>
+        </tr>
+      
+    </tbody>
+  </table>
+    </div>
+
+    <div id="kt" class="tab">
+      <h2>3. Nhóm giống kế toán/kho</h2>
+      
+  
+    <section class="block">
+      <div class="block-title">Thực phẩm — 1 mặt hàng</div>
+      
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>THUC_PHAM</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">NẤM ĐÔNG CÔ</td>
+          <td class="center">kg</td>
+          <td class="right">423</td>
+          <td class="right">423</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">465,3</td>
+          <td>NCC GIA VỊ</td>
+          <td>10kg</td>
+        </tr>
+      
+    </tbody>
+  </table>
+    </section>
+    <section class="block">
+      <div class="block-title">Đồ khô, tráng miệng — 8 mặt hàng</div>
+      
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_303</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.620</td>
+          <td class="right">1.620</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.701</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">2</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_142</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">105,4</td>
+          <td class="right">105,4</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">110,67</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">3</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td></td>
+          <td class="name">Gạo</td>
+          <td class="center">kg</td>
+          <td class="right">6.331,57</td>
+          <td class="right">6.331,57</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">6.648,15</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">4</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_002</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">3.901,26</td>
+          <td class="right">3.901,26</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">4.096,32</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">5</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_006</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.551,1</td>
+          <td class="right">1.551,1</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.628,66</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">6</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_001</td>
+          <td class="name">Dầu ăn</td>
+          <td class="center">ml</td>
+          <td class="right">1.605</td>
+          <td class="right">1.605</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">1.765,5</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="center">7</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">g</td>
+          <td class="right">2.380</td>
+          <td class="right">2.380</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">2.618</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="center">8</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">Kg</td>
+          <td class="right">12,44</td>
+          <td class="right">12,44</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">13,68</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
+        </tr>
+      
+    </tbody>
+  </table>
+    </section>
+    <section class="block">
+      <div class="block-title">Rau củ — 0 mặt hàng</div>
+      
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+    </section>
+
+    </div>
+
+    <div id="ncc" class="tab">
+      <h2>4. Form gửi NCC</h2>
+      
+  
+    <section class="block">
       <div class="block-title">NCC: NCC GẠO — 5 mặt hàng</div>
       
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
         <tr>
-          <th>STT</th>
-          <th>Ngày ăn</th>
-          <th>Ngày đặt</th>
-          <th>Ngày giao</th>
-          <th>Chu kỳ</th>
-          <th>Nhóm</th>
-          <th>Mã NVL</th>
-          <th>Tên hàng</th>
-          <th>ĐVT</th>
-          <th>SL nấu</th>
-          <th>Trước sơ chế</th>
-          <th>Gối đầu</th>
-          <th>HS</th>
-          <th>SL đề xuất</th>
-          <th>NCC</th>
-          <th>Ghi chú</th>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_303</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.620</td>
+          <td class="right">1.620</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.701</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
         </tr>
-      </thead>
-      <tbody>
-        
-          <tr>
-            <td class="center">1</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_303</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">1.620</td>
-            <td class="right">1.620</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">1.701</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">2</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_142</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">105,4</td>
-            <td class="right">105,4</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">110,67</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">3</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td></td>
-            <td class="name">Gạo</td>
-            <td class="center">kg</td>
-            <td class="right">6.331,57</td>
-            <td class="right">6.331,57</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">6.648,15</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">4</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_002</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">3.901,26</td>
-            <td class="right">3.901,26</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">4.096,32</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-          <tr>
-            <td class="center">5</td>
-            <td>2026-05-18</td>
-            <td>18/05/2026</td>
-            <td>18/05/2026</td>
-            <td class="center">9_DAYS</td>
-            <td>GẠO</td>
-            <td>TP_FOOD_006</td>
-            <td class="name">GẠO</td>
-            <td class="center">kg</td>
-            <td class="right">1.551,1</td>
-            <td class="right">1.551,1</td>
-            <td class="right">0</td>
-            <td class="center">5%</td>
-            <td class="right strong">1.628,66</td>
-            <td>NCC GẠO</td>
-            <td>Khoảng 9 ngày / 1000kg</td>
-          </tr>
-        
-      </tbody>
-    </table>
-  
+      
+        <tr>
+          <td class="center">2</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_142</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">105,4</td>
+          <td class="right">105,4</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">110,67</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">3</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td></td>
+          <td class="name">Gạo</td>
+          <td class="center">kg</td>
+          <td class="right">6.331,57</td>
+          <td class="right">6.331,57</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">6.648,15</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">4</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_002</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">3.901,26</td>
+          <td class="right">3.901,26</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">4.096,32</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+        <tr>
+          <td class="center">5</td>
+          <td>2026-05-18</td>
+          <td>18/05/2026</td>
+          <td>18/05/2026</td>
+          <td class="center">9_DAYS</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_006</td>
+          <td class="name">GẠO</td>
+          <td class="center">kg</td>
+          <td class="right">1.551,1</td>
+          <td class="right">1.551,1</td>
+          <td class="right">0</td>
+          <td class="center">5%</td>
+          <td class="right strong">1.628,66</td>
+          <td>NCC GẠO</td>
+          <td>Khoảng 9 ngày / 1000kg</td>
+        </tr>
+      
+    </tbody>
+  </table>
     </section>
-  
-    <section class="block supplier">
+    <section class="block">
       <div class="block-title">NCC: NCC ĐỒ KHÔ — 3 mặt hàng</div>
       
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
         <tr>
-          <th>STT</th>
-          <th>Ngày ăn</th>
-          <th>Ngày đặt</th>
-          <th>Ngày giao</th>
-          <th>Chu kỳ</th>
-          <th>Nhóm</th>
-          <th>Mã NVL</th>
-          <th>Tên hàng</th>
-          <th>ĐVT</th>
-          <th>SL nấu</th>
-          <th>Trước sơ chế</th>
-          <th>Gối đầu</th>
-          <th>HS</th>
-          <th>SL đề xuất</th>
-          <th>NCC</th>
-          <th>Ghi chú</th>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_001</td>
+          <td class="name">Dầu ăn</td>
+          <td class="center">ml</td>
+          <td class="right">1.605</td>
+          <td class="right">1.605</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">1.765,5</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
         </tr>
-      </thead>
-      <tbody>
-        
-          <tr>
-            <td class="center">1</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>GIA VỊ, ĐỒ KHÔ</td>
-            <td>TP_FOOD_001</td>
-            <td class="name">Dầu ăn</td>
-            <td class="center">ml</td>
-            <td class="right">1.605</td>
-            <td class="right">1.605</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">1.765,5</td>
-            <td>NCC ĐỒ KHÔ</td>
-            <td></td>
-          </tr>
-        
-          <tr>
-            <td class="center">2</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>GIA VỊ, ĐỒ KHÔ</td>
-            <td>TP_FOOD_149</td>
-            <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-            <td class="center">g</td>
-            <td class="right">2.380</td>
-            <td class="right">2.380</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">2.618</td>
-            <td>NCC ĐỒ KHÔ</td>
-            <td></td>
-          </tr>
-        
-          <tr>
-            <td class="center">3</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>GIA VỊ, ĐỒ KHÔ</td>
-            <td>TP_FOOD_149</td>
-            <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
-            <td class="center">Kg</td>
-            <td class="right">12,44</td>
-            <td class="right">12,44</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">13,68</td>
-            <td>NCC ĐỒ KHÔ</td>
-            <td></td>
-          </tr>
-        
-      </tbody>
-    </table>
-  
+      
+        <tr>
+          <td class="center">2</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">g</td>
+          <td class="right">2.380</td>
+          <td class="right">2.380</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">2.618</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
+        </tr>
+      
+        <tr>
+          <td class="center">3</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>DO_KHO_TRANG_MIENG</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">MÌ TRẦN KHÔNG GIA VỊ</td>
+          <td class="center">Kg</td>
+          <td class="right">12,44</td>
+          <td class="right">12,44</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">13,68</td>
+          <td>NCC ĐỒ KHÔ</td>
+          <td></td>
+        </tr>
+      
+    </tbody>
+  </table>
     </section>
-  
-    <section class="block supplier">
+    <section class="block">
       <div class="block-title">NCC: NCC GIA VỊ — 1 mặt hàng</div>
       
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ngày ăn</th>
+        <th>Ngày đặt</th>
+        <th>Ngày giao</th>
+        <th>Chu kỳ</th>
+        <th>Nhóm KT</th>
+        <th>Mã NVL</th>
+        <th>Tên hàng</th>
+        <th>ĐVT</th>
+        <th>SL nấu</th>
+        <th>Trước sơ chế</th>
+        <th>Gối đầu</th>
+        <th>HS</th>
+        <th>SL đề xuất</th>
+        <th>NCC</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      
         <tr>
-          <th>STT</th>
-          <th>Ngày ăn</th>
-          <th>Ngày đặt</th>
-          <th>Ngày giao</th>
-          <th>Chu kỳ</th>
-          <th>Nhóm</th>
-          <th>Mã NVL</th>
-          <th>Tên hàng</th>
-          <th>ĐVT</th>
-          <th>SL nấu</th>
-          <th>Trước sơ chế</th>
-          <th>Gối đầu</th>
-          <th>HS</th>
-          <th>SL đề xuất</th>
-          <th>NCC</th>
-          <th>Ghi chú</th>
+          <td class="center">1</td>
+          <td>2026-05-18</td>
+          <td>Cuối tháng</td>
+          <td>Ngày 1-10</td>
+          <td class="center">MONTHLY</td>
+          <td>THUC_PHAM</td>
+          <td>TP_FOOD_149</td>
+          <td class="name">NẤM ĐÔNG CÔ</td>
+          <td class="center">kg</td>
+          <td class="right">423</td>
+          <td class="right">423</td>
+          <td class="right">0</td>
+          <td class="center">10%</td>
+          <td class="right strong">465,3</td>
+          <td>NCC GIA VỊ</td>
+          <td>10kg</td>
         </tr>
-      </thead>
-      <tbody>
-        
-          <tr>
-            <td class="center">1</td>
-            <td>2026-05-18</td>
-            <td>Cuối tháng</td>
-            <td>Ngày 1-10</td>
-            <td class="center">MONTHLY</td>
-            <td>THÁNG</td>
-            <td>TP_FOOD_149</td>
-            <td class="name">NẤM ĐÔNG CÔ</td>
-            <td class="center">kg</td>
-            <td class="right">423</td>
-            <td class="right">423</td>
-            <td class="right">0</td>
-            <td class="center">10%</td>
-            <td class="right strong">465,3</td>
-            <td>NCC GIA VỊ</td>
-            <td>10kg</td>
-          </tr>
-        
-      </tbody>
-    </table>
-  
+      
+    </tbody>
+  </table>
     </section>
-  
+
+    </div>
   </div>
 
   <div class="footer">
@@ -574,5 +1054,14 @@ tr:nth-child(even) td{background:#fafafa}
   </div>
 </div>
 </div>
+
+<script>
+function openTab(id){
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.tabbtn').forEach(x => x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
 </body>
 </html>
